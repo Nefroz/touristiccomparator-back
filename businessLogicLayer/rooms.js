@@ -9,7 +9,7 @@ const {exec} = require("child_process");
 const logger = require("tracer").console();
 const guid = require("uuid/v1");
 const User = require("../core/User.js");
-var bcrypt = require('bcrypt');
+var bcrypt = require("bcrypt");
 
 exports.testretour = (req, res,next) => {
 	User.findAll().then(users => {
@@ -19,6 +19,9 @@ exports.testretour = (req, res,next) => {
 };
 
 exports.signin = (req,res,next) => {
+
+  
+  console.log(req.body.email)
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const user = new User({
