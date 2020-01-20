@@ -7,13 +7,14 @@ module.exports = sequelize.define("User", {
     autoIncrement: true,
     primaryKey: true,
   },
-  email: {
+  name: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true,
   },
-  password: {
+  adresse: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   }
 });
