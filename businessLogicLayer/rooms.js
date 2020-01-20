@@ -8,7 +8,7 @@ const async = require("async");
 const {exec} = require("child_process");
 const logger = require("tracer").console();
 const guid = require("uuid/v1");
-const User = require("../core/User.js");
+const User = require("../data/User.js");
 var bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
