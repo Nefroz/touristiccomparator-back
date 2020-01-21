@@ -9,19 +9,22 @@ const {exec} = require("child_process");
 const logger = require("tracer").console();
 const guid = require("uuid/v1");
 const User = require("../data/User");
+const Equipement = require("../data/Equipement");
+const Reserv = require("../data/Reserv");
+const Rooms = require("../data/Rooms");
+const db = require("../data/index");
 var bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-exports.testretour = (req, res,next) => {
+exports.getUser = (req, res,next) => {
+
 	User.findAll().then(users => {
   		console.log("All users:", JSON.stringify(users, null, 4));
   		res.status(200).json(users);
 	}).catch(error => res.status(400).json({ error }));
 };
 
-exports.signin = (req,res,next) => {
-  
-  console.log(req.body.email)
+exports.postUser = (req,res,next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const user = new User({
@@ -60,4 +63,22 @@ exports.login = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+exports.createEquipement = (req,res,next) => {
+  db.Equipement.create({
+    name: req.body.name,
+    desc: req.body.desc,
+    tarifj: req.body.tarifj,
+    tarifh: req.body.tarifh,
+    caution: req.body.caution,
+    stock: req.body.stock,
+  })
+  .then(() => res.status(201).json({ message: 'Equipement créé !' }))
+  .catch(error => res.status(400).json({ error }));
+}
 
+exports.getEquipement = (req, res,next) => {
+  db.Equipement.findAll().then(equipement => {
+      console.log("All users:", JSON.stringify(equipement, null, 4));
+      res.status(200).json(equipement);
+  }).catch(error => res.status(400).json({ error }));
+};
