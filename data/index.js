@@ -1,5 +1,6 @@
 'use strict';
 const fs = require('fs');
+const async = require('async');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
@@ -21,6 +22,7 @@ fs
     const model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -28,4 +30,21 @@ Object.keys(db).forEach(modelName => {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+/*async.waterfall([
+  c => {
+    db.Rooms.create({
+      name : "brol",
+    }).then( (room) => {
+      c(null, room )
+    })
+  }, 
+  (room, c) => {
+    db.Detail.create({
+      roomId : instance.id,
+      
+    })
+  }
+])*/
+
 module.exports = db;

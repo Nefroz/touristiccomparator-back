@@ -1,12 +1,6 @@
 const Detail =require("./Detail")
 module.exports = function(sequelize, DataTypes) {
-     var Equi = sequelize.define("Equi", {
-  id: {
-    type: DataTypes.INTEGER(11),
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-  },
+     var Equipement = sequelize.define("Equipement", {
   desc: {
     type: DataTypes.STRING,
   },
@@ -22,6 +16,13 @@ module.exports = function(sequelize, DataTypes) {
   	type: DataTypes.BIGINT,
   	allowNull: false,
   }
-})
-  return Equi;
+}, {
+     paranoid:true,
+   })
+
+Equipement.associate = (db) => {
+  Equipement.belongsTo(db.Detail)
+}
+
+return Equipement;
 };

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('tracer').console();
 const db = require('./data');
+const async = require("async");
 const app = express();
 
 // let sequelize = require('./core/connection');
@@ -11,8 +12,8 @@ const app = express();
 // const modelEqui = require('./core/Equi.js');
 // const modelReserv = require('./core/Reserv.js');
 // const modelDetail = require('./core/Detail.js');
-console.log(db);
 db.sequelize.sync({alter:true})
+/*db.sequelize.sync({force:true})*/
 
 const roomsRoutes = require('./appHost/rooms');
 

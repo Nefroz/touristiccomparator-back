@@ -1,12 +1,7 @@
 const Detail =require("./Detail")
 module.exports = function(sequelize, DataTypes) {
+
      var Reserv = sequelize.define("Reserv", {
-  id: {
-    type: DataTypes.INTEGER(11),
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-  },
   debut: {
     type: DataTypes.DATE,
     allowNull: false,
@@ -26,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  equi: {
+  equipement: {
     type: DataTypes.BIGINT,
   },
   salle: {
@@ -47,20 +42,17 @@ module.exports = function(sequelize, DataTypes) {
   commentaire: {
     type: DataTypes.STRING,
   },
-  createdbyuserid: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  },
-  createdon: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  modifiedbyuserid: {
-    type: DataTypes.BIGINT,
-  },
-  modifiedon: {
-    type: DataTypes.DATE,
+  validee: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: '0'
   }
-});
-  return Reserv;
- }
+}, {
+     paranoid:true,
+   });
+
+Reserv.associate = (db) => {
+  Reserv.belongsTo(db.Detail)
+}
+
+return Reserv;
+}

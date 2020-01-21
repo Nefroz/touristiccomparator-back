@@ -1,12 +1,6 @@
 Detail =require("./Detail.js")
 module.exports = function(sequelize, DataTypes) {
      var Rooms = sequelize.define("Rooms", {
-  id: {
-    type: DataTypes.INTEGER(11),
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -15,7 +9,15 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  adressenuméro: {
+  adressenumero: {
+    type: DataTypes.BIGINT,
+    allowNull: false,
+  },
+  adresselocalite: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  adressecodepostal: {
     type: DataTypes.BIGINT,
     allowNull: false,
   },
@@ -49,6 +51,13 @@ module.exports = function(sequelize, DataTypes) {
   idcontact:{
     type: DataTypes.BIGINT,
   }
-})
-  return Rooms;
+}, {
+     paranoid:true,
+   })
+
+Rooms.associate = (db) => {
+  Rooms.belongsTo(db.Detail)
+}
+
+return Rooms;
 };
