@@ -12,10 +12,10 @@ const app = express();
 // const modelEqui = require('./core/Equi.js');
 // const modelReserv = require('./core/Reserv.js');
 // const modelDetail = require('./core/Detail.js');
-// db.sequelize.sync({alter:true})
-/*db.sequelize.sync({force:true})*/
+/*db.sequelize.sync({alter:true})*/
+db.sequelize.sync({force:true})
 
-const roomsRoutes = require('./appHost/rooms');
+const ibookRoutes = require('./appHost/ibook');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use('core/ressources/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/rooms', roomsRoutes);
+app.use('/api/ibook', ibookRoutes);
 
 db.sequelize
   .authenticate()

@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.BIGINT,
   },
   namesalle:{
-    type: DataTypes.BIGINT,
+    type: DataTypes.STRING,
   },
   idcontact:{
     type: DataTypes.BIGINT,

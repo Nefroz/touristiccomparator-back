@@ -16,7 +16,7 @@ const db = require("../data/index");
 var bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-exports.getUser = (req, res,next) => {
+exports.getUser = (req,res,next) => {
 
 	User.findAll().then(users => {
   		console.log("All users:", JSON.stringify(users, null, 4));
@@ -38,7 +38,7 @@ exports.postUser = (req,res,next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-exports.login = (req, res, next) => {
+exports.login = (req,res,next) => {
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
@@ -78,7 +78,62 @@ exports.createEquipement = (req,res,next) => {
 
 exports.getEquipement = (req, res,next) => {
   db.Equipement.findAll().then(equipement => {
-      console.log("All users:", JSON.stringify(equipement, null, 4));
+      console.log("Tout les equipements:", JSON.stringify(equipement, null, 4));
       res.status(200).json(equipement);
+  }).catch(error => res.status(400).json({ error }));
+};
+
+exports.createRooms = (req,res,next) => {
+  db.Rooms.create({
+    name: req.body.name,
+    adresserue: req.body.adresserue,
+    adressenumero: req.body.adressenumero,
+    adresselocalite: req.body.adresselocalite,
+    adressecodepostal: req.body.adressecodepostal,
+    description: req.body.description,
+    couleur: req.body.couleur,
+    couleurargb: req.body.couleurargb,
+    type: req.body.type,
+    tarifj: req.body.tarifj,
+    tarifh: req.body.tarifh,
+    capacite: req.body.capacite,
+    etage: req.body.etage,
+    namesalle: req.body.namesalle,
+    idcontact: req.body.idcontact,
+  })
+  .then(() => res.status(201).json({ message: 'Salle créée !' }))
+  .catch(error => res.status(400).json({ error }));
+}
+
+exports.getRooms = (req,res,next) => {
+  db.Rooms.findAll().then(rooms => {
+      console.log("Toutes les salles:", JSON.stringify(rooms, null, 4));
+      res.status(200).json(rooms);
+  }).catch(error => res.status(400).json({ error }));
+};
+
+exports.createReserv = (req,res,next) => {
+  db.Reserv.create({
+    debut: req.body.debut,
+    fin: req.body.fin,
+    objet: req.body.objet,
+    reservateur: req.body.reservateur,
+    tarification: req.body.tarification,
+    equipement: req.body.equipement,
+    salle: req.body.salle,
+    activite: req.body.activite,
+    journeeentiere: req.body.journeeentiere,
+    idorganisateur: req.body.idorganisateur,
+    commentaire: req.body.commentaire,
+    validee: req.body.validee,
+  })
+  .then(() => res.status(201).json({ message: 'Réservation créée !' }))
+  .catch(error => res.status(400).json({ error }));
+}
+
+exports.getReserv = (req,res,next) => {
+  db.Reserv.findAll().then(reserv => {
+      console.log("Toutes les réservations:", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
   }).catch(error => res.status(400).json({ error }));
 };
