@@ -292,3 +292,36 @@ exports.deleteVehicule = (req,res,next) => {
   .then(() => res.status(200).json({ message: 'Véhicule supprimé !' }))
   .catch(error => res.status(500).json({ error }));
 }
+
+exports.createTarification = (req,res,next) => {
+  db.Tarification.create({
+  })
+  .then(() => res.status(201).json({ message: 'Tarification créée !' }))
+  .catch(error => res.status(400).json({ error }));
+}
+
+exports.getTarification = (req,res,next) => {
+  db.Tarification.findAll().then(reserv => {
+      console.log("Toutes les tarifications:", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
+  }).catch(error => res.status(400).json({ error }));
+};
+
+exports.putTarification = (req,res,next) =>{
+  const indice=req.params.id;
+  db.Tarification.update({ 
+  },
+  { where: { id: indice } }
+  )
+  .then(() => res.status(200).json({ message: 'Tarification modifiée !' }))
+  .catch(error => res.status(204).json({ error }))
+};
+
+exports.deleteTarification = (req,res,next) => {
+  const indice=req.params.id;
+  db.Tarification.destroy({
+  where: { id:indice }
+})
+  .then(() => res.status(200).json({ message: 'Tarification supprimée !' }))
+  .catch(error => res.status(500).json({ error }));
+}

@@ -1,4 +1,6 @@
 const Detail =require("./Detail")
+const Tarification =require("./Tarification")
+
 module.exports = function(sequelize, DataTypes) {
 
      var Reserv = sequelize.define("Reserv", {
@@ -52,6 +54,7 @@ module.exports = function(sequelize, DataTypes) {
 
 Reserv.associate = (db) => {
   Reserv.belongsTo(db.Detail)
+  Reserv.belongsTo(db.Tarification)
 }
 
 return Reserv;

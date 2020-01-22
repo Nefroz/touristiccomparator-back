@@ -27,6 +27,9 @@ router.get('/vehicule',ibookCtrl.getVehicule);
 router.put('/vehicule/:id',ibookCtrl.putVehicule);
 router.delete('/vehicule/:id',ibookCtrl.deleteVehicule);
 
-
+router.post('/tarification',ibookCtrl.createTarification);
+router.get('/tarification',ibookCtrl.getTarification);
+router.put('/tarification/:id',ibookCtrl.putTarification);
+router.delete('/tarification/:id',ibookCtrl.deleteTarification);
 
 module.exports = router;

@@ -71,6 +71,9 @@ module.exports = function(sequelize, DataTypes) {
 
 Rooms.associate = (db) => {
   Rooms.belongsTo(db.Detail)
+  Rooms.hasMany(db.Indisponibiliteequipement)
+  Rooms.hasMany(db.Indisponibilitesalle)
+
 }
 
 return Rooms;
