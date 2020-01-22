@@ -50,6 +50,20 @@ module.exports = function(sequelize, DataTypes) {
   },
   idcontact:{
     type: DataTypes.BIGINT,
+  },
+  projecteur:{
+    type: DataTypes.BOOLEAN,
+  },
+  validationinterne:{
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  },
+  validationexterne:{
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  },
+  caution:{
+    type: DataTypes.STRING,
   }
 }, {
      paranoid:true,

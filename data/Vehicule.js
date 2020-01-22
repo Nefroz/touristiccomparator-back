@@ -1,28 +1,30 @@
 const Detail =require("./Detail")
 module.exports = function(sequelize, DataTypes) {
-     var Equipement = sequelize.define("Equipement", {
-  name: {
+
+     var Vehicule = sequelize.define("Vehicule", {
+  marque: {
     type: DataTypes.STRING,
-    unique:true
-  },   
-  description: {
+    allowNull: false,
+  },
+  modele: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
-  tarifj: {
+  immatriculation: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  capacite: {
     type: DataTypes.BIGINT,
     allowNull: false,
   },
-  tarifh: {
-    type: DataTypes.BIGINT,
+  typecarburant: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  caution: {
+  responsablevalidation: {
     type: DataTypes.BIGINT,
     allowNull: false,
-  },
-  stock: {
-  	type: DataTypes.BIGINT,
-  	allowNull: false,
   },
   validationinterne: {
     type: DataTypes.BOOLEAN,
@@ -32,17 +34,13 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  responsable: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  }
 }, {
      paranoid:true,
-   })
+   });
 
-Equipement.associate = (db) => {
-  Equipement.belongsTo(db.Detail)
+Vehicule.associate = (db) => {
+  Vehicule.belongsTo(db.Detail)
 }
 
-return Equipement;
-};
+return Vehicule;
+}

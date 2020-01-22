@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
   Detail.associate = (db) => {
     Detail.hasOne(db.Reserv);
     Detail.hasMany(db.Equipement);
-    Detail.hasMany(db.Rooms);
+    Detail.hasOne(db.Rooms);
+    Detail.hasMany(db.Vehicule);
   }
   return Detail;
   };
