@@ -295,6 +295,12 @@ exports.deleteVehicule = (req,res,next) => {
 
 exports.createTarification = (req,res,next) => {
   db.Tarification.create({
+    name: req.body.name,
+    equij: req.body.equij,
+    equih: req.body.equih,
+    sallej: req.body.sallej,
+    salleh: req.body.salleh,
+    caution: req.body.caution,
   })
   .then(() => res.status(201).json({ message: 'Tarification créée !' }))
   .catch(error => res.status(400).json({ error }));
@@ -310,6 +316,12 @@ exports.getTarification = (req,res,next) => {
 exports.putTarification = (req,res,next) =>{
   const indice=req.params.id;
   db.Tarification.update({ 
+    name: req.body.name,
+    equij: req.body.equij,
+    equih: req.body.equih,
+    sallej: req.body.sallej,
+    salleh: req.body.salleh,
+    caution: req.body.caution,
   },
   { where: { id: indice } }
   )

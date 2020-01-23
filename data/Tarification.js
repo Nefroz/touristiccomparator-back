@@ -3,7 +3,21 @@ module.exports = function(sequelize, DataTypes) {
      var Tarification = sequelize.define("Tarification", {
   name: {
     type: DataTypes.STRING,
-    unique:true
+  },
+  equij: {
+    type: DataTypes.BIGINT,
+  },
+  equih: {
+    type: DataTypes.BIGINT,
+  },
+  sallej: {
+    type: DataTypes.BIGINT,
+  },
+  salleh: {
+    type: DataTypes.BIGINT,
+  },
+  caution: {
+    type: DataTypes.BIGINT,
   },
 }, {
      paranoid:true,
