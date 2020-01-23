@@ -32,4 +32,14 @@ router.get('/tarification',ibookCtrl.getTarification);
 router.put('/tarification/:id',ibookCtrl.putTarification);
 router.delete('/tarification/:id',ibookCtrl.deleteTarification);
 
+router.post('/indisposalle',ibookCtrl.createIndisposalle);
+router.get('/indisposalle',ibookCtrl.getIndisposalle);
+router.put('/indisposalle/:id',ibookCtrl.putIndisposalle);
+router.delete('/indisposalle/:id',ibookCtrl.deleteIndisposalle);
+
+router.post('/indispoequi',ibookCtrl.createIndispoequi);
+router.get('/indispoequi',ibookCtrl.getIndispoequi);
+router.put('/indispoequi/:id',ibookCtrl.putIndispoequi);
+router.delete('/indispoequi/:id',ibookCtrl.deleteIndispoequi);
+
 module.exports = router;

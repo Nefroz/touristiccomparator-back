@@ -337,3 +337,85 @@ exports.deleteTarification = (req,res,next) => {
   .then(() => res.status(200).json({ message: 'Tarification supprimée !' }))
   .catch(error => res.status(500).json({ error }));
 }
+
+exports.createIndisposalle = (req,res,next) => {
+  db.Indisposalle.create({
+    name: req.body.name,
+    createdby: req.body.createdby,
+    debut: req.body.debut,
+    fin: req.body.fin,
+  })
+  .then(() => res.status(201).json({ message: 'Indisposition d\'une salle créée !' }))
+  .catch(error => res.status(400).json({ error }));
+}
+
+exports.getIndisposalle = (req,res,next) => {
+  db.Indisposalle.findAll().then(indisposalle => {
+      console.log("Toutes les indisponibilités des salles:", JSON.stringify(indisposalle, null, 4));
+      res.status(200).json(indisposalle);
+  }).catch(error => res.status(400).json({ error }));
+};
+
+exports.putIndisposalle = (req,res,next) =>{
+  const indice=req.params.id;
+  db.Indisposalle.update({ 
+    name: req.body.name,
+    createdby: req.body.createdby,
+    debut: req.body.debut,
+    fin: req.body.fin,
+  },
+  { where: { id: indice } }
+  )
+  .then(() => res.status(200).json({ message: 'Indisponibilité de la salle à l\'indice '+req.params.id+' modifiée !' }))
+  .catch(error => res.status(204).json({ error }))
+};
+
+exports.deleteIndisposalle = (req,res,next) => {
+  const indice=req.params.id;
+  db.Indisposalle.destroy({
+  where: { id:indice }
+})
+  .then(() => res.status(200).json({ message: 'Indisponibilité de la salle à l\'indice '+req.params.id+'  supprimée !' }))
+  .catch(error => res.status(500).json({ error }));
+}
+
+exports.createIndispoequi = (req,res,next) => {
+  db.Indispoequi.create({
+    name: req.body.name,
+    createdby: req.body.createdby,
+    debut: req.body.debut,
+    fin: req.body.fin,
+  })
+  .then(() => res.status(201).json({ message: 'Indisponibilité d\'équipement créée !' }))
+  .catch(error => res.status(400).json({ error }));
+}
+
+exports.getIndispoequi = (req,res,next) => {
+  db.Indispoequi.findAll().then(indispoequi => {
+      console.log("Toutes les indisponibilités d\'équipement:", JSON.stringify(indispoequi, null, 4));
+      res.status(200).json(indispoequi);
+  }).catch(error => res.status(400).json({ error }));
+};
+
+exports.putIndispoequi = (req,res,next) =>{
+  const indice=req.params.id;
+  db.Indispoequi.update({ 
+    name: req.body.name,
+    createdby: req.body.createdby,
+    debut: req.body.debut,
+    fin: req.body.fin,
+  },
+  { where: { id: indice } }
+  )
+  .then(() => res.status(200).json({ message: 'Indisponibilité de l\'équipement à l\'indice '+req.params.id+' modifiée !' }))
+  .catch(error => res.status(204).json({ error }))
+};
+
+exports.deleteIndispoequi = (req,res,next) => {
+  const indice=req.params.id;
+  db.Indispoequi.destroy({
+  where: { id:indice }
+})
+  .then(() => res.status(200).json({ message: 'Indisponibilité de l\'équipement à l\'indice '+req.params.id+' supprimée !' }))
+  .catch(error => res.status(500).json({ error }));
+}
