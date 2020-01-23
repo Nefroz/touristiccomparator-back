@@ -188,23 +188,59 @@ exports.deleteRooms = (req,res,next) => {
 }
 
 exports.createReserv = (req,res,next) => {
-  db.Reserv.create({
-    debut: req.body.debut,
-    fin: req.body.fin,
-    objet: req.body.objet,
-    reservateur: req.body.reservateur,
-    tarification: req.body.tarification,
-    equipement: req.body.equipement,
-    salle: req.body.salle,
-    activite: req.body.activite,
-    journeeentiere: req.body.journeeentiere,
-    idorganisateur: req.body.idorganisateur,
-    commentaire: req.body.commentaire,
-    validee: req.body.validee,
+  datedebuttest=Date.parse(req.body.debut)
+  datefintest=Date.parse(req.body.fin)
+  console.log(req.body.salle)
+  db.Reserv.findAll({
+    where: {
+      id: req.body.salle
+    }
+  })         //trouver toutes les reservations ou la salle en requete vaut celle en room
+  .then( (reserv) =>{  
+    if ( reserv.length === 0) {
+      db.Reserv.create({
+          debut: req.body.debut,
+          fin: req.body.fin,
+          objet: req.body.objet,
+          reservateur: req.body.reservateur,
+          tarification: req.body.tarification,
+          equipement: req.body.equipement,
+          salle: req.body.salle,
+          activite: req.body.activite,
+          journeeentiere: req.body.journeeentiere,
+          idorganisateur: req.body.idorganisateur,
+          commentaire: req.body.commentaire,
+          validee: req.body.validee,
+        })
+        .then(() => res.status(201).json({ message: 'Réservation créée !' }))
+        .catch(error => res.status(400).json({ error }));
+    } else {
+      reserv.map( item =>{
+        console.log(item.dataValues.fin,item.dataValues.debut)
+        if( (datedebuttest>=item.dataValues.fin) || (datefintest<=item.dataValues.debut) ){
+            db.Reserv.create({
+            debut: req.body.debut,
+            fin: req.body.fin,
+            objet: req.body.objet,
+            reservateur: req.body.reservateur,
+            tarification: req.body.tarification,
+            equipement: req.body.equipement,
+            salle: req.body.salle,
+            activite: req.body.activite,
+            journeeentiere: req.body.journeeentiere,
+            idorganisateur: req.body.idorganisateur,
+            commentaire: req.body.commentaire,
+            validee: req.body.validee,
+          })
+          .then(() => res.status(201).json({ message: 'Réservation créée !' }))
+          .catch(error => res.status(400).json({ error }));   
+        }
+      })
+    }
   })
-  .then(() => res.status(201).json({ message: 'Réservation créée !' }))
-  .catch(error => res.status(400).json({ error }));
+  .catch( error => res.status(400).json({error}))
 }
+
 
 exports.getReserv = (req,res,next) => {
   db.Reserv.findAll().then(reserv => {

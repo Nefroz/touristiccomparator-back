@@ -6,10 +6,6 @@ const logger = require('tracer').console();
 const db = require('./data');
 const async = require("async");
 const app = express();
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
- 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // let sequelize = require('./core/connection');
 // const modelUser = require('./core/User.js');

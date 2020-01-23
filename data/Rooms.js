@@ -73,7 +73,7 @@ Rooms.associate = (db) => {
   Rooms.belongsTo(db.Detail)
   Rooms.hasMany(db.Indispoequi)
   Rooms.hasMany(db.Indisposalle)
-
+  Rooms.hasMany(db.Reserv)
 }
 
 return Rooms;
