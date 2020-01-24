@@ -34,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
+  caution: {
+    type: DataTypes.BIGINT,
+    allowNull: false,
+  },
 }, {
      paranoid:true,
    });

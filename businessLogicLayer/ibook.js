@@ -290,6 +290,7 @@ exports.createVehicule = (req,res,next) => {
     responsablevalidation: req.body.responsablevalidation,
     validationinterne: req.body.validationinterne,
     validationexterne: req.body.validationexterne,
+    caution: req.body.caution
   })
   .then(() => res.status(201).json({ message: 'Vehicule créé !' }))
   .catch(error => res.status(400).json({ error }));
@@ -313,6 +314,8 @@ exports.putVehicule = (req,res,next) =>{
     responsablevalidation: req.body.responsablevalidation,
     validationinterne: req.body.validationinterne,
     validationexterne: req.body.validationexterne,
+    caution: req.body.caution
+
   },
   { where: { id: indice } }
   )
