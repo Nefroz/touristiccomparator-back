@@ -13,7 +13,7 @@ const app = express();
 // const modelReserv = require('./core/Reserv.js');
 // const modelDetail = require('./core/Detail.js');
 /*db.sequelize.sync({alter:true})*/
-db.sequelize.sync({force:true})
+// db.sequelize.sync({force:true})
 
 const ibookRoutes = require('./appHost/ibook');
 

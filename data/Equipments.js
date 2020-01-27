@@ -1,6 +1,5 @@
-const Detail =require("./Detail")
 module.exports = function(sequelize, DataTypes) {
-     var Equipement = sequelize.define("Equipement", {
+     var Equipments = sequelize.define("Equipments", {
   name: {
     type: DataTypes.STRING,
     unique:true,
@@ -9,15 +8,11 @@ module.exports = function(sequelize, DataTypes) {
   description: {
     type: DataTypes.STRING,
   },
-  tarifj: {
+  pricingd: {
     type: DataTypes.BIGINT,
     allowNull: false,
   },
-  tarifh: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  },
-  caution: {
+  pricingh: {
     type: DataTypes.BIGINT,
     allowNull: false,
   },
@@ -25,25 +20,26 @@ module.exports = function(sequelize, DataTypes) {
   	type: DataTypes.BIGINT,
   	allowNull: false,
   },
-  validationinterne: {
+  validintern: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  validationexterne: {
+  validextern: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  responsable: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  }
 }, {
      paranoid:true,
    })
 
-Equipement.associate = (db) => {
-  Equipement.belongsTo(db.Detail)
+Equipments.associate = (db) => {
+  Equipments.belongsTo(db.Details);
+  Equipments.belongsTo(db.Rooms);
+  Equipments.hasMany(db.Unavailibilities);
+  Equipments.belongsTo(db.Gages);
+  Equipments.hasMany(db.Descriptions);
+  Equipments.belongsTo(db.Users);
 }
 
-return Equipement;
+return Equipments;
 };

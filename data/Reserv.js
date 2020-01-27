@@ -1,51 +1,47 @@
-const Detail =require("./Detail")
-const Tarification =require("./Tarification")
-const Rooms = require("./Rooms")
-
 module.exports = function(sequelize, DataTypes) {
 
      var Reserv = sequelize.define("Reserv", {
-  debut: {
+  start: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  fin: {
+  end: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  objet: {
+  object: {
     type: DataTypes.STRING,
   },
-  reservateur: {
+  booker: {
     type: DataTypes.BIGINT,
-    allowNull: false,
+    // allowNull: false,
   },
-  tarification: {
+  pricingtype: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
+    // allowNull: false,
   },
-  equipement: {
+  equipment: {
     type: DataTypes.BIGINT,
   },
-  salle: {
+  room: {
     type: DataTypes.STRING,
-    allowNull: false,
+    // allowNull: false,
   },
-  activite: {
+  activity: {
     type: DataTypes.STRING,
   },
-  journeeentiere: {
+  fullday: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
+    // allowNull: false,
   },
-  idorganisateur: {
+  idorganizer: {
     type: DataTypes.BIGINT,
-    allowNull: false,
+    // allowNull: false,
   },
-  commentaire: {
+  comment: {
     type: DataTypes.STRING,
   },
-  validee: {
+  valid: {
     type: DataTypes.BOOLEAN,
     defaultValue: '0'
   }
@@ -54,9 +50,8 @@ module.exports = function(sequelize, DataTypes) {
    });
 
 Reserv.associate = (db) => {
-  Reserv.belongsTo(db.Detail)
-  Reserv.belongsTo(db.Tarification)
-  Reserv.belongsTo(db.Rooms)
+  Reserv.belongsTo(db.Details)
+  Reserv.belongsTo(db.Users)
 }
 
 return Reserv;

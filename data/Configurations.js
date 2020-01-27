@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-     var Configuration = sequelize.define("Configuration", {
+     var Configurations = sequelize.define("Configurations", {
   name: {
     type: DataTypes.STRING,
     unique:true
@@ -8,5 +8,5 @@ module.exports = function(sequelize, DataTypes) {
      paranoid:true,
    })
 
-return Configuration;
+return Configurations;
 };

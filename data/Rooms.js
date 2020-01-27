@@ -1,79 +1,73 @@
-Detail =require("./Detail.js")
 module.exports = function(sequelize, DataTypes) {
      var Rooms = sequelize.define("Rooms", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  adresserue: {
+  adressstreet: {
     type: DataTypes.STRING,
-    allowNull: false,
+    // allowNull: false,
   },
-  adressenumero: {
+  adressnumber: {
     type: DataTypes.BIGINT,
-    allowNull: false,
+    // allowNull: false,
   },
-  adresselocalite: {
+  adresscity: {
     type: DataTypes.STRING,
-    allowNull: false,
+    // allowNull: false,
   },
-  adressecodepostal: {
+  adresspostalcode: {
     type: DataTypes.BIGINT,
-    allowNull: false,
+    // allowNull: false,
   },
   description: {
     type: DataTypes.STRING,
   },
-  couleur: {
+  color: {
     type: DataTypes.STRING,
   },
-  couleurargb:{
+  colorargb:{
     type: DataTypes.STRING,
   },
   type:{
     type: DataTypes.STRING,
   },
-  tarifj:{
+  pricingd:{
     type: DataTypes.BIGINT,
   },
-  tarifh:{
+  pricingh:{
     type: DataTypes.BIGINT,
   },
-  capacite:{
+  capacity:{
     type: DataTypes.BIGINT,
   },
-  etage:{
-    type: DataTypes.BIGINT,
-  },
-  namesalle:{
+  roomname:{
     type: DataTypes.STRING,
   },
-  idcontact:{
-    type: DataTypes.BIGINT,
-  },
-  projecteur:{
+  projector:{
     type: DataTypes.BOOLEAN,
   },
-  validationinterne:{
+  validintern:{
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    // allowNull: false
   },
-  validationexterne:{
+  validextern:{
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    // allowNull: false
   },
-  caution:{
-    type: DataTypes.STRING,
-  }
 }, {
      paranoid:true,
    })
 
 Rooms.associate = (db) => {
-  Rooms.belongsTo(db.Detail)
-  Rooms.hasMany(db.Indispoequi)
-  Rooms.hasMany(db.Indisposalle)
-  Rooms.hasMany(db.Reserv)
+  Rooms.belongsTo(db.Details)
+  Rooms.hasMany(db.Unavailibilities)
+  Rooms.hasMany(db.Descriptions)
+  Rooms.belongsTo(db.Gages);
+  Rooms.hasMany(db.Equipments);
+  Rooms.belongsTo(db.Addresses);
+  Rooms.belongsTo(db.Users);
+
 }
 
 return Rooms;

@@ -1,31 +1,30 @@
-
 module.exports = function(sequelize, DataTypes) {
-     var Tarification = sequelize.define("Tarification", {
+     var Pricings = sequelize.define("Pricings", {
   name: {
     type: DataTypes.STRING,
   },
-  equij: {
+  equipd: {
     type: DataTypes.BIGINT,
   },
-  equih: {
+  equiph: {
     type: DataTypes.BIGINT,
   },
-  sallej: {
+  roomd: {
     type: DataTypes.BIGINT,
   },
-  salleh: {
+  roomh: {
     type: DataTypes.BIGINT,
   },
-  caution: {
+  gage: {
     type: DataTypes.BIGINT,
   },
 }, {
      paranoid:true,
    })
 
-Tarification.associate = (db) => {
-  Tarification.hasOne(db.Reserv)
+Pricings.associate = (db) => {
+  Pricings.belongsTo(db.Details)
 }
 
-return Tarification;
+return Pricings;
 };
