@@ -12,22 +12,22 @@ const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
 const moment = require("moment")
 
-exports.createRoomunavailibility = (req,res,next) => {
-  db.Roomunavailibility.create(req.body)
+exports.createUnavailibility = (req,res,next) => {
+  db.Unavailibilities.create(req.body)
   .then(() => res.status(201).json(req.body))
   .catch(error => res.status(400).json({ error }));
 }
 
-exports.getRoomunavailibility = (req,res,next) => {
-  db.Roomunavailibility.findAll().then(roomunavailibility => {
-      console.log("Toutes les indisponibilités des salles:", JSON.stringify(roomunavailibility, null, 4));
-      res.status(200).json(roomunavailibility);
+exports.getUnavailibility = (req,res,next) => {
+  db.Unavailibilities.findAll().then(unavailibility => {
+      console.log("All unavailibilities:", JSON.stringify(unavailibility, null, 4));
+      res.status(200).json(unavailibility);
   }).catch(error => res.status(400).json({ error }));
 };
 
-exports.putRoomunavailibility = (req,res,next) =>{
+exports.putUnavailibility = (req,res,next) =>{
   const indice=req.params.id;
-  db.Roomunavailibility.update(
+  db.Unavailibilities.update(
   req.body,
   { where: { id: indice } }
   )
@@ -35,11 +35,11 @@ exports.putRoomunavailibility = (req,res,next) =>{
   .catch(error => res.status(204).json({ error }))
 };
 
-exports.deleteRoomunavailibility = (req,res,next) => {
+exports.deleteUnavailibility = (req,res,next) => {
   const indice=req.params.id;
-  db.Roomunavailibility.destroy({
+  db.Unavailibilities.destroy({
   where: { id:indice }
 })
-  .then(() => res.status(200).json({ message: 'Room unavailibility related to index: '+req.params.id+'  deleted !' }))
+  .then(() => res.status(200).json({ message: 'Unavailibility related to index: '+req.params.id+' deleted !' }))
   .catch(error => res.status(500).json({ error }));
 }

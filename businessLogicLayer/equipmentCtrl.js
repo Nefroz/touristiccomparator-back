@@ -14,15 +14,33 @@ const moment = require("moment");
 
 exports.createEquipment = (req,res,next) => {
   db.Equipments.create(req.body)
-  .then(() => res.status(201).json(req.body))
+  .then((instance) =>{
+    Object.assign(req.body, {EquipmentId : instance.id})
+    console.log(req.body)
+    db.Descriptions.create(req.body)
+    .then((instance) =>{
+      db.Gages.create(req.body)
+      .then(() => res.status(201).json(req.body))
+      .catch(error => res.status(400).json({ error }));
+    })
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(400).json({ error }));
 }
 
 exports.getEquipment = (req, res,next) => {
-  db.Equipments.findAll().then(equipment => {
-      console.log("All equipments: ", JSON.stringify(equipment, null, 4));
-      res.status(200).json(equipment);
-  }).catch(error => res.status(400).json({ error }));
+  db.Equipments.findAll({
+    include : [
+      { model : db.Descriptions },
+      { model : db.Gages }
+    ]
+  }).then(reserv => {
+      console.log("All equipments: ", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
 };
 
 exports.putEquipment = (req,res,next) =>{

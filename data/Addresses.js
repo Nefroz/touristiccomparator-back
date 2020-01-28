@@ -20,8 +20,8 @@ module.exports = function(sequelize, DataTypes) {
    })
 
   Addresses.associate = (db) => {
-    Addresses.hasMany(db.Users);
-    Addresses.hasMany(db.Rooms);
+    Addresses.belongsTo(db.Users);
+    Addresses.belongsTo(db.Rooms);
   }
   return Addresses;
   };

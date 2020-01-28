@@ -12,49 +12,47 @@ const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
 const moment = require("moment")
 
+exports.createUser = (req,res,next) => {
+  db.Users.create(req.body)
+  .then((instance) =>{
+    Object.assign(req.body, {UserId : instance.id})
+    console.log(req.body)
+    db.Addresses.create(req.body)
+    .then(() => res.status(201).json(req.body))
+    .catch(error => res.status(400).json({ error }));
+  })
+  .catch(error => res.status(400).json({ error }));
+}
+
 exports.getUser = (req,res,next) => {
-
-	User.findAll().then(users => {
-  		console.log("All users:", JSON.stringify(users, null, 4));
-  		res.status(200).json(users);
-	}).catch(error => res.status(400).json({ error }));
+  db.Users.findAll({
+    include : [
+      { model : db.Addresses },
+    ]
+  }).then(reserv => {
+      console.log("All users: ", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
 };
 
-exports.postUser = (req,res,next) => {
-  bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-      const user = new Users({
-        email: req.body.email,
-        password: hash
-      });
-      user.save()
-        .then(() => res.status(201).json({ message: 'User created!' }))
-        .catch(error => res.status(400).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+exports.putUser = (req,res,next) =>{
+  const indice=req.params.id;
+  db.Users.update(
+  req.body,
+  { where: { id: indice } }
+  )
+  .then(() => res.status(200).json(req.body))
+  .catch(error => res.status(204).json({ error }))
 };
 
-exports.login = (req,res,next) => {
-  Users.findOne({ email: req.body.email })
-    .then(user => {
-      if (!user) {
-        return res.status(401).json({ error: 'Wrong username or incorrect password!' });
-      }
-      bcrypt.compare(req.body.password, user.password)
-        .then(valid => {
-          if (!valid) {
-            return res.status(401).json({ error: 'Wrong username or incorrect password!' });
-          }
-          res.status(200).json({
-            userId: user._id,
-            token: jwt.sign(
-              { userId: user._id },
-              'InforiusIbookInforius0101',
-              { expiresIn: '24h' }
-            )
-          });
-        })
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
-};
+exports.deleteUser = (req,res,next) => {
+  const indice=req.params.id;
+  db.Users.destroy({
+  where: { id:indice }
+})
+  .then(() => res.status(200).json({ message: 'User deleted!' }))
+  .catch(error => res.status(500).json({ error }));
+}

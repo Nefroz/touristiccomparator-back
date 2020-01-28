@@ -14,15 +14,37 @@ const moment = require("moment")
 
 exports.createRooms = (req,res,next) => {
   db.Rooms.create(req.body)
-  .then(() => res.status(201).json(req.body))
+  .then((instance) =>{
+    Object.assign(req.body, {RoomId : instance.id})
+    db.Descriptions.create(req.body)
+    .then((instance) =>{
+      db.Gages.create(req.body)
+      .then((instance) =>{
+        db.Addresses.create(req.body)
+        .then(() => res.status(201).json(req.body))
+        .catch(error => res.status(400).json({ error }));
+      })
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(400).json({ error }));
+})
+.catch(error => res.status(400).json({ error }));
 }
 
-exports.getRooms = (req,res,next) => {
-  db.Rooms.findAll().then(rooms => {
-      console.log("All rooms: ", JSON.stringify(rooms, null, 4));
-      res.status(200).json(rooms);
-  }).catch(error => res.status(400).json({ error }));
+exports.getRooms = (req, res,next) => {
+  db.Rooms.findAll({
+    include : [
+      { model : db.Descriptions },
+      { model : db.Gages },
+      { model : db.Addresses },
+    ]
+  }).then(reserv => {
+      console.log("All rooms: ", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
 };
 
 exports.putRooms = (req,res,next) =>{

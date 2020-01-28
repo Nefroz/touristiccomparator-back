@@ -12,8 +12,8 @@ module.exports = function(sequelize, DataTypes) {
    })
 
    Gages.associate = (db) => {
-     Gages.hasOne(db.Equipments);
-     Gages.hasOne(db.Rooms);
+     Gages.belongsTo(db.Equipments);
+     Gages.belongsTo(db.Rooms);
   }
   return Gages;
   };

@@ -23,19 +23,35 @@ exports.createReserv = (req,res,next) => {
   .then( (reserv) =>{  
     if ( reserv.length === 0) {
       db.Reserv.create(req.body)
-        .then((instance) => {
-          console.log(instance)
-          res.status(201).json(instance)
+      .then((instance) =>{
+        Object.assign(req.body, {UserId : instance.id})
+        db.Detail.create(req.body)
+        .then((instance) =>{
+          db.Files.create(req.body)
+          .then(() => {
+            
+
+
+
+
+            res.status(201).json(req.body)
+          })
+          .catch(error => res.status(400).json({ error }));
         })
-        .catch(error => {
-          console.log(error)
-          res.status(400).json({ error })
-        });
+        .catch(error => res.status(400).json({ error }));
+      })
+      .catch(error => {
+        console.log(error)
+        res.status(400).json({ error })
+      });
     } else {
       reserv.map( item =>{
         if( (datestarttest>=item.dataValues.end) || (dateendtest<=item.dataValues.start) ){
             db.Reserv.create(req.body)
-          .then((instance) => res.status(201).json(instance))
+          .then((instance) => {
+            // BLABLABLA
+            res.status(201).json(instance)
+          })
           .catch(error => res.status(400).json({ error }));   
         }
         else {

@@ -1,13 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
      var Equipments = sequelize.define("Equipments", {
-  name: {
-    type: DataTypes.STRING,
-    unique:true,
-    allowNull: false
-  },   
-  description: {
-    type: DataTypes.STRING,
-  },
   pricingd: {
     type: DataTypes.BIGINT,
     allowNull: false,
@@ -36,7 +28,7 @@ Equipments.associate = (db) => {
   Equipments.belongsTo(db.Details);
   Equipments.belongsTo(db.Rooms);
   Equipments.hasMany(db.Unavailibilities);
-  Equipments.belongsTo(db.Gages);
+  Equipments.hasMany(db.Gages);
   Equipments.hasMany(db.Descriptions);
   Equipments.belongsTo(db.Users);
 }

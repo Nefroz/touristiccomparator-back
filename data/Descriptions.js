@@ -4,12 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  adressstreet: {
+  value: {
     type: DataTypes.STRING,
-    // allowNull: false,
-  },
-  adressnumber: {
-    type: DataTypes.BIGINT,
     // allowNull: false,
   },
 }, {

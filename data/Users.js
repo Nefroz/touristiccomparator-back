@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
    })
 
   Users.associate = (db) => {
-    Users.belongsTo(db.Addresses);
+    Users.hasMany(db.Addresses);
     Users.hasMany(db.Unavailibilities);
     Users.hasMany(db.Reserv);
     Users.hasMany(db.Equipments);
