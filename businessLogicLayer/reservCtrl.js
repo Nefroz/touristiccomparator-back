@@ -26,18 +26,7 @@ exports.createReserv = (req,res,next) => {
       .then((instance) =>{
         Object.assign(req.body, {UserId : instance.id})
         db.Detail.create(req.body)
-        .then((instance) =>{
-          db.Files.create(req.body)
-          .then(() => {
-            
-
-
-
-
-            res.status(201).json(req.body)
-          })
-          .catch(error => res.status(400).json({ error }));
-        })
+        .then((instance) =>{res.status(201).json(req.body)})
         .catch(error => res.status(400).json({ error }));
       })
       .catch(error => {

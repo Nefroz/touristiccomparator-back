@@ -30,9 +30,6 @@ module.exports = function(sequelize, DataTypes) {
   fullday: {
     type: DataTypes.BOOLEAN,
   },
-  idorganizer: {
-    type: DataTypes.BIGINT,
-  },
   comment: {
     type: DataTypes.STRING,
   },
