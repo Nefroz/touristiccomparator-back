@@ -19,17 +19,18 @@ exports.install = (req, res, next) => {
           c(null)
         })
     }
+    ,
+    c => {
+      db.Rooms.bulkCreate([{name : "test"}, {name : "test"}, {name : "test"}, {name : "test"}])
+        .then(() => {
+         c(null) 
+       })
+        .catch(error => {
+          // res.status(400).json({ error })
+          console.log(error)
+        } );
+    }
     // ,
-    // c => {
-    //   db.Rooms.bulkCreate([{name : "test"}, {name : "test"}, {name : "test"}, {name : "test"}])
-    //     .then(() => {
-    //      c(null) 
-    //    })
-    //     .catch(error => {
-    //       // res.status(400).json({ error })
-    //       console.log(error)
-    //     } );
-    // },
     // c => {
     //   db.Reserv.bulkCreate([
     //     { start : moment("01/01/2020", "DD*/MM/YYYY").toDate(),  end : moment("31/01/2020", "DD*/MM/YYYY").toDate(), RoomId:4 },

@@ -10,7 +10,7 @@ const db = require("../data/index");
 var bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
-const moment = require("moment")
+const moment = require("moment");
 
 exports.createReserv = (req,res,next) => {
   const datestarttest=Date.parse(req.body.start)
@@ -21,17 +21,22 @@ exports.createReserv = (req,res,next) => {
     }
   })         //trouver toutes les reservations ou la salle en requete vaut celle en room
   .then( (reserv) =>{  
+    console.log(reserv)
     if ( reserv.length === 0) {
+      console.log("1",req.body)
       db.Reserv.create(req.body)
       .then((instance) =>{
         Object.assign(req.body, {UserId : instance.id})
+        Object.assign(req.body, {EquipId : instance.id})
+        console.log("2",req.body)
         db.Detail.create(req.body)
-        .then((instance) =>{res.status(201).json(req.body)})
-        .catch(error => res.status(400).json({ error }));
+        .then(() =>{res.status(201).json(req.body)})
+        .catch(error => res.status(400).json({ "message":"bam",error }))
       })
       .catch(error => {
+        console.log("3",req.body)
         console.log(error)
-        res.status(400).json({ error })
+        res.status(400).json({ "message":"boum",error })
       });
     } else {
       reserv.map( item =>{
