@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
    })
 
   Details.associate = (db) => {
-    Details.hasOne(db.Reserv);
+    Details.belongsTo(db.Reserv);
     Details.hasMany(db.Equipments);
     Details.hasOne(db.Rooms);
     Details.hasOne(db.Files);

@@ -16,7 +16,6 @@ exports.createUser = (req,res,next) => {
   db.Users.create(req.body)
   .then((instance) =>{
     Object.assign(req.body, {UserId : instance.id})
-    console.log(req.body)
     db.Addresses.create(req.body)
     .then(() => res.status(201).json(req.body))
     .catch(error => res.status(400).json({ error }));

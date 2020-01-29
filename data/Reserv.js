@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
    });
 
 Reserv.associate = (db) => {
-  Reserv.belongsTo(db.Details)
+  Reserv.hasMany(db.Details)
   Reserv.belongsTo(db.Users)
 }
 
