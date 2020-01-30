@@ -19,10 +19,17 @@ exports.createUnavailibility = (req,res,next) => {
 }
 
 exports.getUnavailibility = (req,res,next) => {
-  db.Unavailibilities.findAll().then(unavailibility => {
-      console.log("All unavailibilities:", JSON.stringify(unavailibility, null, 4));
-      res.status(200).json(unavailibility);
-  }).catch(error => res.status(400).json({ error }));
+  db.Unavailibilities.findAll({
+    include : [
+      { model : db.Unavailibilities , as: 'Parent' }
+    ]
+  }).then(reserv => {
+      console.log("All unavailibilities: ", JSON.stringify(reserv, null, 4));
+      res.status(200).json(reserv);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
 };
 
 exports.putUnavailibility = (req,res,next) =>{

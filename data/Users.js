@@ -18,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       tel: {
         type: DataTypes.BIGINT,
       },
+      rights: {
+        type: DataTypes.BIGINT,
+        defaultValue: '0'
+      },
    }, {
      paranoid:true,
    })

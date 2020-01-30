@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userCtrl = require('../businessLogicLayer/userCtrl');
 const installdbCtrl = require('../businessLogicLayer/installdbCtrl')
+const seeddbCtrl = require('../businessLogicLayer/seeddbCtrl')
 const equipmentCtrl = require('../businessLogicLayer/equipmentCtrl')
 const pricingCtrl = require('../businessLogicLayer/pricingCtrl')
 const reservCtrl = require('../businessLogicLayer/reservCtrl')
@@ -53,6 +54,7 @@ router.put('/descriptions/:id',descriptionsCtrl.putDescriptions);
 router.get('/detail',detailCtrl.getDetail);
 router.put('/detail/:id',detailCtrl.putDetail);
 //Files
+router.post('/files',filesCtrl.createFiles);
 router.get('/files',filesCtrl.getFiles);
 router.put('/files/:id',filesCtrl.putFiles);
 //Gages
@@ -60,5 +62,6 @@ router.get('/gages',gagesCtrl.getGages);
 router.put('/gages/:id',gagesCtrl.putGages);
 //Install and seed the database
 router.get('/install',installdbCtrl.install);
+router.get('/seed',seeddbCtrl.seed);
 
 module.exports = router;

@@ -15,7 +15,6 @@ module.exports = function(sequelize, DataTypes) {
      paranoid:true,
    })
 Unavailibilities.associate = (db) => {
-  Unavailibilities.hasMany(Unavailibilities, { as: 'Children', foreignKey: 'parentId', useJunctionTable: false });
   Unavailibilities.belongsTo(db.Equipments);
   Unavailibilities.belongsTo(db.Rooms);
   Unavailibilities.belongsTo(db.Users);

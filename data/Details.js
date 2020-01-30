@@ -1,8 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
      var Details = sequelize.define("Details", {
-      equipment: {
-        type: DataTypes.BIGINT,
-      },
       units: {
         type: DataTypes.BIGINT,
       },
@@ -12,10 +9,10 @@ module.exports = function(sequelize, DataTypes) {
 
   Details.associate = (db) => {
     Details.belongsTo(db.Reserv);
-    Details.hasMany(db.Equipments);
-    Details.hasOne(db.Rooms);
+    Details.belongsTo(db.Equipments);
+    Details.belongsTo(db.Rooms);
     Details.hasOne(db.Files);
-    Details.hasOne(db.Pricings);
+    Details.belongsTo(db.Pricings);
   }
   return Details;
   };
