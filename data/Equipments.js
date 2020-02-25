@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
      var Equipments = sequelize.define("Equipments", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   pricingd: {
     type: DataTypes.BIGINT,
     allowNull: false,
@@ -10,7 +14,6 @@ module.exports = function(sequelize, DataTypes) {
   },
   stock: {
   	type: DataTypes.BIGINT,
-  	allowNull: false,
   },
   validintern: {
     type: DataTypes.BOOLEAN,

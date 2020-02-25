@@ -17,16 +17,19 @@ const gagesCtrl = require('../businessLogicLayer/gagesCtrl')
 //User
 router.post('/user', userCtrl.createUser);
 router.get('/user',userCtrl.getUser);
+router.get('/usersimplified',userCtrl.getUserSimplified);
 router.put('/user/:id',userCtrl.putUser);
 router.delete('/user/:id',userCtrl.deleteUser);
 //Equipment
 router.post('/equipment', equipmentCtrl.createEquipment);
 router.get('/equipment',equipmentCtrl.getEquipment);
+router.get('/equipmentsimplified',equipmentCtrl.getEquipmentSimplified);
 router.put('/equipment/:id',equipmentCtrl.putEquipment);
 router.delete('/equipment/:id',equipmentCtrl.deleteEquipment);
 //Rooms
 router.post('/rooms',roomsCtrl.createRooms);
 router.get('/rooms',roomsCtrl.getRooms);
+router.get('/roomssimplified',roomsCtrl.getRoomsSimplified);
 router.put('/rooms/:id',roomsCtrl.putRooms);
 router.delete('/rooms/:id',roomsCtrl.deleteRooms);
 //Reservation
@@ -37,6 +40,7 @@ router.delete('/reserv/:id',reservCtrl.deleteReserv);
 //Pricing
 router.post('/pricing',pricingCtrl.createPricing);
 router.get('/pricing',pricingCtrl.getPricing);
+router.get('/pricingsimplified',pricingCtrl.getPricingSimplified);
 router.put('/pricing/:id',pricingCtrl.putPricing);
 router.delete('/pricing/:id',pricingCtrl.deletePricing);
 //Unavailibility

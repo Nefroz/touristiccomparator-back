@@ -15,20 +15,8 @@ module.exports = function(sequelize, DataTypes) {
   pricingtype: {
     type: DataTypes.BOOLEAN,
   },
-  equipment: {
-    type: DataTypes.BIGINT,
-  },
-  units: {
-    type: DataTypes.BIGINT,
-  },
-  room: {
-    type: DataTypes.STRING,
-  },
   activity: {
     type: DataTypes.STRING,
-  },
-  fullday: {
-    type: DataTypes.BOOLEAN,
   },
   comment: {
     type: DataTypes.STRING,

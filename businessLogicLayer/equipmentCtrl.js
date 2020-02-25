@@ -43,6 +43,18 @@ exports.getEquipment = (req, res,next) => {
   });
 };
 
+exports.getEquipmentSimplified = (req,res,next) => {
+  db.Equipments.findAll({
+    attributes : ["id", "name"]
+  }).then(equipment => {
+      console.log("All equipments: ", JSON.stringify(equipment, null, 4));
+      res.status(200).json(equipment);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putEquipment = (req,res,next) =>{
   const indice=req.params.id;
   db.Equipments.update(

@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
   },
   value: {
     type: DataTypes.STRING,
-    // allowNull: false,
   },
 }, {
      paranoid:true,

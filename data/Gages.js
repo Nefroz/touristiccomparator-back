@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
      var Gages = sequelize.define("Gages", {
       name: {
         type: DataTypes.STRING,
+        allowNull:false
       },
       amount: {
         type: DataTypes.BIGINT,

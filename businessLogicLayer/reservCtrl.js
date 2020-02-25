@@ -17,10 +17,10 @@ exports.createReserv = (req,res,next) => {
   const datestarttest=Date.parse(req.body.start)
   const dateendtest=Date.parse(req.body.end)
   const requested = express.json(req.body)
-  console.log(requested)
+  console.log(req.body)
   db.Reserv.findAll({
     where: {
-      id: req.body.room
+      id: req.body.RoomId
     }
   })         //trouver toutes les reservations ou la salle en requete vaut celle en room
   .then( (reserv) =>{  

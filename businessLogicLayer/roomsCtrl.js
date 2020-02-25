@@ -47,6 +47,18 @@ exports.getRooms = (req, res,next) => {
   });
 };
 
+exports.getRoomsSimplified = (req,res,next) => {
+  db.Rooms.findAll({
+    attributes : ["id", "name"]
+  }).then(rooms => {
+      console.log("All rooms: ", JSON.stringify(rooms, null, 4));
+      res.status(200).json(rooms);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putRooms = (req,res,next) =>{
   const indice=req.params.id;
   db.Rooms.update(

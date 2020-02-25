@@ -1,9 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-     var Rooms = sequelize.define("Rooms", {
-  color: {
+  var Rooms = sequelize.define("Rooms", {
+  name: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
-  colorargb:{
+  color: {
     type: DataTypes.STRING,
   },
   pricingd:{
@@ -15,19 +16,14 @@ module.exports = function(sequelize, DataTypes) {
   capacity:{
     type: DataTypes.BIGINT,
   },
-  roomname:{
-    type: DataTypes.STRING,
-  },
   projector:{
     type: DataTypes.BOOLEAN,
   },
   validintern:{
     type: DataTypes.BOOLEAN,
-    // allowNull: false
   },
   validextern:{
     type: DataTypes.BOOLEAN,
-    // allowNull: false
   },
 }, {
      paranoid:true,

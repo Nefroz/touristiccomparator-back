@@ -42,10 +42,10 @@ exports.seed = (req, res, next) => {
     },
     c => {
       db.Rooms.bulkCreate([
-        {color : "blue",colorargb : "0,0,153,1",pricingd : "1000",pricingh : "300",capacity : "300",roomname : "Salle du big mac",projector : "1",validintern : "0",validextern : "1"},
-        {color : "black",colorargb : "0,0,0,1",pricingd : "500",pricingh : "150",capacity : "200",roomname : "Salle des pates carbonara",projector : "1",validintern : "0",validextern : "1"},
-        {color : "red",colorargb : "153,0,0,1",pricingd : "300",pricingh : "100",capacity : "120",roomname : "Salle du tacos",projector : "0",validintern : "0",validextern : "1"},
-        {color : "white",colorargb : "255,255,255,1",pricingd : "200",pricingh : "80",capacity : "80",roomname : "Salle du pain perdu",projector : "0",validintern : "0",validextern : "0"},])
+        {name : "Salle du big mac",color : "blue",pricingd : "1000",pricingh : "300",capacity : "300",projector : "1",validintern : "0",validextern : "1"},
+        {name : "Salle des pates carbonara",color : "black",pricingd : "500",pricingh : "150",capacity : "200",projector : "1",validintern : "0",validextern : "1"},
+        {name : "Salle du tacos",color : "red",pricingd : "300",pricingh : "100",capacity : "120",projector : "0",validintern : "0",validextern : "1"},
+        {name : "Salle du pain perdu",color : "white",pricingd : "200",pricingh : "80",capacity : "80",projector : "0",validintern : "0",validextern : "0"},])
         .then(() => {
          c(null) 
        })
@@ -94,10 +94,10 @@ exports.seed = (req, res, next) => {
     },
     c=>{
       db.Equipments.bulkCreate([
-        {pricingd : "300",pricingh : "100",stock : "10",validintern : "0",validextern : "1",RoomId:"1",UserId:"1"},
-        {pricingd : "200",pricingh : "70",stock : "20",validintern : "0",validextern : "1",RoomId:"2",UserId:"2"},
-        {pricingd : "100",pricingh : "35",stock : "25",validintern : "0",validextern : "0",UserId:"2"},
-        {pricingd : "50",pricingh : "15",stock : "50",validintern : "0",validextern : "0",UserId:"2"}])
+        {name : "Le big mac",pricingd : "300",pricingh : "100",stock : "10",validintern : "0",validextern : "1",RoomId:"1",UserId:"1"},
+        {name : "Les pates carbonara",pricingd : "200",pricingh : "70",stock : "20",validintern : "0",validextern : "1",RoomId:"2",UserId:"2"},
+        {name : "Le tacos",pricingd : "100",pricingh : "35",stock : "25",validintern : "0",validextern : "0",UserId:"2"},
+        {name : "Le pain perdu",pricingd : "50",pricingh : "15",stock : "50",validintern : "0",validextern : "0",UserId:"2"}])
         .then(() => {
          c(null) 
        })
@@ -159,10 +159,10 @@ exports.seed = (req, res, next) => {
     },
     c => {
       db.Reserv.bulkCreate([
-        { start : moment("10/01/2000", "DD*/MM/YYYY").toDate(),  end : moment("20/01/2000", "DD*/MM/YYYY").toDate(), object:"Marriage de la famille Dupont", pricingtype:"1", equipment:"1", units:"1", room:"1", activity:"Marriage", fullday:"1", comment:"Cool", UserId:"2" },
-        { start : moment("20/01/2010", "DD*/MM/YYYY").toDate(),  end : moment("30/01/2010", "DD*/MM/YYYY").toDate(), object:"Petite communion de Kevin", pricingtype:"1", equipment:"2", units:"1", room:"2", activity:"Communion", fullday:"1", comment:"Salut", UserId:"3" },
-        { start : moment("20/06/2015", "DD*/MM/YYYY").toDate(),  end : moment("25/06/2015", "DD*/MM/YYYY").toDate(), object:"Toujours pour Kevin", pricingtype:"0", equipment:"3", units:"1", room:"3", activity:"Barmitsva", fullday:"0", comment:"Bim", UserId:"3" },
-        { start : moment("15/01/2020", "DD*/MM/YYYY").toDate(),  end : moment("20/01/2020", "DD*/MM/YYYY").toDate(), object:"Encore pour Kevin", pricingtype:"0", equipment:"4", units:"1", room:"4", activity:"Anniversaire", fullday:"0", comment:"Boum", UserId:"3" }
+        { start : moment("10/01/2000", "DD*/MM/YYYY").toDate(),  end : moment("20/01/2000", "DD*/MM/YYYY").toDate(), object:"Marriage de la famille Dupont", pricingtype:"1", room:"1", activity:"Marriage", comment:"Cool", UserId:"2" },
+        { start : moment("20/01/2010", "DD*/MM/YYYY").toDate(),  end : moment("30/01/2010", "DD*/MM/YYYY").toDate(), object:"Petite communion de Kevin", pricingtype:"1", room:"2", activity:"Communion", comment:"Salut", UserId:"3" },
+        { start : moment("20/06/2015", "DD*/MM/YYYY").toDate(),  end : moment("25/06/2015", "DD*/MM/YYYY").toDate(), object:"Toujours pour Kevin", pricingtype:"0", room:"3", activity:"Barmitsva", comment:"Bim", UserId:"3" },
+        { start : moment("15/01/2020", "DD*/MM/YYYY").toDate(),  end : moment("20/01/2020", "DD*/MM/YYYY").toDate(), object:"Encore pour Kevin", pricingtype:"0", room:"4", activity:"Anniversaire", comment:"Boum", UserId:"3" }
       ]).then( () => {
         c(null)
       }) .catch(error => {

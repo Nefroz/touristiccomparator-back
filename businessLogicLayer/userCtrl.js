@@ -13,14 +13,21 @@ const sequelize = require("sequelize");
 const moment = require("moment")
 
 exports.createUser = (req,res,next) => {
+  logger.log('CREATE USER PROCESS')
   db.Users.create(req.body)
   .then((instance) =>{
-    Object.assign(req.body, {UserId : instance.id})
+    logger.log('CC')
+    logger.log(instance);
+    Object.assign(req.body, {UserId : instance.id});
+    console.log(req.body)
     db.Addresses.create(req.body)
     .then(() => res.status(201).json(req.body))
     .catch(error => res.status(400).json({ error }));
   })
-  .catch(error => res.status(400).json({ error }));
+  .catch(error => {
+    logger.log(error)
+    res.status(400).json({ error })
+  });
 }
 
 exports.getUser = (req,res,next) => {
@@ -28,14 +35,27 @@ exports.getUser = (req,res,next) => {
     include : [
       { model : db.Addresses },
     ]
-  }).then(reserv => {
-      console.log("All users: ", JSON.stringify(reserv, null, 4));
-      res.status(200).json(reserv);
+  }).then(users => {
+      console.log("All users: ", JSON.stringify(users, null, 4));
+      res.status(200).json(users);
   }).catch(error => {
     console.log(error)
     res.status(400).json({ error })
   });
 };
+
+exports.getUserSimplified = (req,res,next) => {
+  db.Users.findAll({
+    attributes : ["id", "firstname", "lastname", "birthday"]
+  }).then(users => {
+      console.log("All users: ", JSON.stringify(users, null, 4));
+      res.status(200).json(users);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 
 exports.putUser = (req,res,next) =>{
   const indice=req.params.id;

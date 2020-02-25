@@ -10,7 +10,7 @@ const db = require("../data/index");
 var bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
-const moment = require("moment")
+const moment = require("moment");
 
 exports.createUnavailibility = (req,res,next) => {
   db.Unavailibilities.create(req.body)
@@ -20,9 +20,6 @@ exports.createUnavailibility = (req,res,next) => {
 
 exports.getUnavailibility = (req,res,next) => {
   db.Unavailibilities.findAll({
-    include : [
-      { model : db.Unavailibilities , as: 'Parent' }
-    ]
   }).then(reserv => {
       console.log("All unavailibilities: ", JSON.stringify(reserv, null, 4));
       res.status(200).json(reserv);
