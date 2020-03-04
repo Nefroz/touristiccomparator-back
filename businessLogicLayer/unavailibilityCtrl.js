@@ -29,6 +29,20 @@ exports.getUnavailibility = (req,res,next) => {
   });
 };
 
+exports.getOneUnavailibility = (req,res,next) => {
+  db.Unavailibilities.findAll({
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(unavailibility => {
+      console.log("User: ", JSON.stringify(unavailibility, null, 4));
+      res.status(200).json(unavailibility);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putUnavailibility = (req,res,next) =>{
   const indice=req.params.id;
   db.Unavailibilities.update(

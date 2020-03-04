@@ -28,11 +28,12 @@ exports.createEquipment = (req,res,next) => {
   .catch(error => res.status(400).json({ error }));
 }
 
-exports.getEquipment = (req, res,next) => {
+exports.getEquipment = (req,res,next) => {
   db.Equipments.findAll({
     include : [
       { model : db.Descriptions },
-      { model : db.Gages }
+      { model : db.Gages },
+      { model : db.Rooms}
     ]
   }).then(reserv => {
       console.log("All equipments: ", JSON.stringify(reserv, null, 4));
@@ -55,13 +56,44 @@ exports.getEquipmentSimplified = (req,res,next) => {
   });
 };
 
+exports.getOneEquipment = (req,res,next) => {
+  db.Equipments.findAll({
+    include : [
+      { model : db.Gages },
+      { model : db.Descriptions},
+      { model : db.Rooms}
+    ],
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(equipment => {
+      console.log("Equipment: ", JSON.stringify(equipment, null, 4));
+      res.status(200).json(equipment);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putEquipment = (req,res,next) =>{
   const indice=req.params.id;
   db.Equipments.update(
   req.body,
   { where: { id: indice } }
   )
-  .then(() => res.status(200).json(req.body))
+  .then((instance) =>{
+    Object.assign(req.body, {EquipmentId : instance.id});
+    console.log(req.body)
+    db.Addresses.update(req.body,
+      { where: { id: indice } })
+    .then(() =>{
+      db.Gages.update(req.body,
+        { where: { id: indice } })
+      .then(() => res.status(201).json(req.body))
+      .catch(error => res.status(400).json({ error }));
+    })
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(204).json({ error }))
 };
 

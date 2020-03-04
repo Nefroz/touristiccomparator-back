@@ -16,7 +16,7 @@ exports.seed = (req, res, next) => {
   async.waterfall([
     c => {
       db.Users.bulkCreate([
-        {firstname : "David",lastname : "Testylol",birthday : moment("01/01/1990", "DD*/MM/YYYY").toDate(),email : "testylol@gmail.com",tel : "0123456789",rights : "2"},
+        {firstname : "Leader",lastname : "Supreme",birthday : moment("01/01/1990", "DD*/MM/YYYY").toDate(),email : "leadersupreme69@gmail.com",tel : "0123456789",rights : "2"},
         {firstname : "Laurent",lastname : "Testywow",birthday : moment("10/10/1980", "DD*/MM/YYYY").toDate(),email : "testywow@yahoo.fr",tel : "0123456789",rights : "1"},
         {firstname : "Louis",lastname : "Testyboum",birthday : moment("01/04/1970", "DD*/MM/YYYY").toDate(),email : "testyboum@outlook.com",tel : "0123456789",rights : "0"},
         {firstname : "Pierre",lastname : "Testybam",birthday : moment("12/06/1960", "DD*/MM/YYYY").toDate(),email : "testybam@gmail.fr",tel : "0123456789",rights : "0"}])
@@ -42,10 +42,10 @@ exports.seed = (req, res, next) => {
     },
     c => {
       db.Rooms.bulkCreate([
-        {name : "Salle du big mac",color : "blue",pricingd : "1000",pricingh : "300",capacity : "300",projector : "1",validintern : "0",validextern : "1"},
-        {name : "Salle des pates carbonara",color : "black",pricingd : "500",pricingh : "150",capacity : "200",projector : "1",validintern : "0",validextern : "1"},
-        {name : "Salle du tacos",color : "red",pricingd : "300",pricingh : "100",capacity : "120",projector : "0",validintern : "0",validextern : "1"},
-        {name : "Salle du pain perdu",color : "white",pricingd : "200",pricingh : "80",capacity : "80",projector : "0",validintern : "0",validextern : "0"},])
+        {name : "Salle du big mac",color : "blue",pricingd : "1000",pricingh : "300",capacity : "300",projector : "1",validintern : "0",validextern : "1",contactId:"1"},
+        {name : "Salle des pates carbonara",color : "black",pricingd : "500",pricingh : "150",capacity : "200",projector : "1",validintern : "0",validextern : "1",contactId:"1"},
+        {name : "Salle du tacos",color : "red",pricingd : "300",pricingh : "100",capacity : "120",projector : "0",validintern : "0",validextern : "1",contactId:"1"},
+        {name : "Salle du pain perdu",color : "white",pricingd : "200",pricingh : "80",capacity : "80",projector : "0",validintern : "0",validextern : "0",contactId:"1"},])
         .then(() => {
          c(null) 
        })
@@ -171,11 +171,11 @@ exports.seed = (req, res, next) => {
     },
     c => {
       db.Details.bulkCreate([
-        { ReservId:"1",RoomId:"1", PricingId:"1" },
-        { ReservId:"1", EquipmentId:"2", units:"2",RoomId:"1",PricingId:"1" },
-        { ReservId:"1", EquipmentId:"1", units:"1",RoomId:"1",PricingId:"1" },
-        { ReservId:"2", EquipmentId:"3", units:"1", PricingId:"1" },
-        { ReservId:"2", RoomId:"3", PricingId:"1" },
+        { ReservId:"1",RoomId:"1", PricingId:"1", Equiplist:"" },
+        { ReservId:"1", EquipmentId:"2", units:"2",RoomId:"1",PricingId:"1", Equiplist:"" },
+        { ReservId:"1", EquipmentId:"1", units:"1",RoomId:"1",PricingId:"1", Equiplist:"" },
+        { ReservId:"2", EquipmentId:"3", units:"1", PricingId:"1", Equiplist:"" },
+        { ReservId:"2", RoomId:"3", PricingId:"1", Equiplist:"" },
       ]).then( () => {
         c(null)
       }) .catch(error => {

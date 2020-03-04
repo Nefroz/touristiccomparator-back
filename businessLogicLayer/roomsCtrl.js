@@ -59,6 +59,25 @@ exports.getRoomsSimplified = (req,res,next) => {
   });
 };
 
+exports.getOneRooms = (req,res,next) => {
+  db.Rooms.findAll({
+    include : [
+      { model : db.Addresses},
+      { model : db.Gages},
+      { model : db.Descriptions},
+    ],
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(room => {
+      console.log("User: ", JSON.stringify(room, null, 4));
+      res.status(200).json(room);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putRooms = (req,res,next) =>{
   const indice=req.params.id;
   db.Rooms.update(
@@ -74,6 +93,19 @@ exports.deleteRooms = (req,res,next) => {
   db.Rooms.destroy({
   where: { id:indice }
 })
-  .then(() => res.status(200).json({ message: 'Room deleted!' }))
+  .then((instance) =>{
+    Object.assign(req.body, {RoomId : instance.id});
+    console.log(req.body)
+    db.Addresses.update(req.body,
+      { where: { id: indice } })
+    .then(() =>{
+      console.log(req.body)
+      db.Descriptions.update(req.body,
+        { where: { id: indice } })
+      .then(() => res.status(201).json(req.body))
+      .catch(error => res.status(400).json({ error }));
+    })
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(500).json({ error }));
 }

@@ -13,13 +13,9 @@ const sequelize = require("sequelize");
 const moment = require("moment")
 
 exports.createUser = (req,res,next) => {
-  logger.log('CREATE USER PROCESS')
   db.Users.create(req.body)
   .then((instance) =>{
-    logger.log('CC')
-    logger.log(instance);
     Object.assign(req.body, {UserId : instance.id});
-    console.log(req.body)
     db.Addresses.create(req.body)
     .then(() => res.status(201).json(req.body))
     .catch(error => res.status(400).json({ error }));
@@ -56,6 +52,22 @@ exports.getUserSimplified = (req,res,next) => {
   });
 };
 
+exports.getOneUser = (req,res,next) => {
+  db.Users.findAll({
+    include : [
+      { model : db.Addresses },
+    ],
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(user => {
+      console.log("User: ", JSON.stringify(user, null, 4));
+      res.status(200).json(user);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
 
 exports.putUser = (req,res,next) =>{
   const indice=req.params.id;
@@ -63,7 +75,14 @@ exports.putUser = (req,res,next) =>{
   req.body,
   { where: { id: indice } }
   )
-  .then(() => res.status(200).json(req.body))
+  .then((instance) =>{
+    Object.assign(req.body, {UserId : instance.id});
+    console.log(req.body)
+    db.Addresses.update(req.body,
+      { where: { id: indice } })
+    .then(() => res.status(201).json(req.body))
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(204).json({ error }))
 };
 

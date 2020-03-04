@@ -37,6 +37,20 @@ exports.getPricingSimplified = (req,res,next) => {
   });
 };
 
+exports.getOnePricing = (req,res,next) => {
+  db.Pricings.findAll({
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(pricing => {
+      console.log("Pricing: ", JSON.stringify(pricing, null, 4));
+      res.status(200).json(pricing);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putPricing = (req,res,next) =>{
   const indice=req.params.id;
   db.Pricings.update(

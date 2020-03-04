@@ -78,13 +78,38 @@ exports.getReserv = (req,res,next) => {
   });
 };
 
+exports.getOneReserv = (req,res,next) => {
+  db.Reserv.findAll({
+    include : [
+      { model : db.Users }, 
+      { model : db.Details }
+    ],
+    where: [
+      {id: req.params.id}
+    ]
+  }).then(Reservation => {
+      console.log("Reservation: ", JSON.stringify(Reservation, null, 4));
+      res.status(200).json(Reservation);
+  }).catch(error => {
+    console.log(error)
+    res.status(400).json({ error })
+  });
+};
+
 exports.putReserv = (req,res,next) =>{
   const indice=req.params.id;
   db.Reserv.update(
   req.body,
   { where: { id: indice } }
   )
-  .then(() => res.status(200).json(req.body))
+  .then((instance) =>{
+    Object.assign(req.body, {ReservId : instance.id});
+    console.log(req.body)
+    db.Details.update(req.body,
+      { where: { id: indice } })
+    .then(() => res.status(201).json(req.body))
+    .catch(error => res.status(400).json({ error }));
+  })
   .catch(error => res.status(204).json({ error }))
 };
 

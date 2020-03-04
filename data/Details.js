@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
      var Details = sequelize.define("Details", {
-      units: {
-        type: DataTypes.BIGINT,
+      Equiplist: {
+        type: DataTypes.JSON,
       },
    }, {
      paranoid:true,
