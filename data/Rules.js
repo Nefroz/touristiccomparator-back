@@ -1,7 +1,7 @@
 "use strict";
 const Generic = require('../core/genericModel');
 
-module.exports = function Model(name = "unavailibilities", alias = "Unavailibilities") {
+module.exports = function Model(name = "rules", alias = "Rules") {
 
 	Generic.call(this)
 
@@ -21,17 +21,15 @@ module.exports = function Model(name = "unavailibilities", alias = "Unavailibili
 	this.definition = (sequelize, DataTypes) => {
 
 		const Model = sequelize.define(this.name, {
-      name: {
-        type: DataTypes.STRING,
-      },
-      start: {
-        type: DataTypes.DATE,
-        allowNull:false
-      },
-      end: {
-        type: DataTypes.DATE,
-        allowNull:false
-      },
+            type : {
+                // promo, reduc, tva, forfait
+                type : DataTypes.STRING, 
+                allowNull : false, 
+            },
+            amount : {
+                type : DataTypes.INTEGER(12),
+                allowNull : false, 
+            },
 		},
 		{
 			paranoid: true,

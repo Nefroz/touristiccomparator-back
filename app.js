@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const logger = require('tracer').console();
-const db = require('./data');
+// const db = require('./data');
 const async = require("async");
 const app = express();
 
@@ -25,16 +25,37 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use('core/ressources/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/ibook', ibookRoutes);
+// app.use('core/ressources/images', express.static(path.join(__dirname, 'images')));
+// app.use('/api/ibook', ibookRoutes);
 
-db.sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+// db.sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
+
+// async.waterfall([
+//   cb => {
+//     db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0;').then( () => {
+//         cb(null)
+//     })
+//   },
+//   cb => {
+//     db.sequelize.sync({force:true}).then( () => {
+//       cb()
+//     })
+//   },
+//   cb => {
+//     db.sequelize.query('SET FOREIGN_KEY_CHECKS = 1;').then( () => {
+//         cb(null)
+//     })
+//   },
+// ])
+
+
+  // logger.log(db)
 
 module.exports = app;

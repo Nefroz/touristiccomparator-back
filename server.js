@@ -1,6 +1,7 @@
 const http = require('http');
 const app = require('./app');
 const cors = require('cors');
+const logger = require('tracer').console();
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -39,8 +40,10 @@ const errorHandler = error => {
 
 app.use(cors())
 
-const server = http.createServer(app);
+const router = require("./core/buildRoutes").router
+app.use("/api/imobi/", router);
 
+const server = http.createServer(app);
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();

@@ -1,5 +1,25 @@
-module.exports = function(sequelize, DataTypes) {
-     var Gages = sequelize.define("Gages", {
+"use strict";
+const Generic = require('../core/genericModel');
+
+module.exports = function Model(name = "gages", alias = "Gages") {
+
+	Generic.call(this)
+
+	this.connexion = "sequelize"
+	this.parent = "/:entity"
+	this.name = name
+  this.token = true 
+  this.alias = alias
+
+	this.belongsTo = ["Ressources"];
+	this.hasMany = [];
+  
+  this.model = undefined 
+  this.toInstall = true 
+
+	this.definition = (sequelize, DataTypes) => {
+
+		const Model = sequelize.define(this.name, {
       name: {
         type: DataTypes.STRING,
         allowNull:false
@@ -8,13 +28,15 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BIGINT,
         allowNull:false
       },
-   }, {
-     paranoid:true,
-   })
+		},
+		{
+			paranoid: true,
+			hooks: {},
+			scopes : {},
+		});
 
-   Gages.associate = (db) => {
-     Gages.belongsTo(db.Equipments);
-     Gages.belongsTo(db.Rooms);
-  }
-  return Gages;
-  };
+		this.model = Model 
+		return Model 
+	}
+
+}
