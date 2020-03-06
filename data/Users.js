@@ -1,56 +1,56 @@
 "use strict";
-const Generic = require('../core/genericModel');
+const Generic = require("../core/genericModel");
 
 module.exports = function Model(name = "users", alias = "Users") {
+  Generic.call(this);
 
-	Generic.call(this)
-
-	this.connexion = "sequelize"
-	this.parent = "/:entity"
-	this.name = name
-  this.token = true 
-  this.alias = alias
+  this.connexion = "sequelize";
+  this.parent = "/:entity";
+  this.name = name;
+  this.token = true;
+  this.alias = alias;
   this.scopes = {};
 
-	this.belongsTo = ["Ressources"];
-	this.hasMany = [];
-  
-  this.model = undefined 
-  this.toInstall = true 
+  this.belongsTo = ["Ressources"];
+  this.hasMany = ["Addresses"];
 
-	this.definition = (sequelize, DataTypes) => {
+  this.model = undefined;
+  this.toInstall = true;
 
-		const Model = sequelize.define(this.name, {
-      firstname: {
-        type: DataTypes.STRING,
-        allowNull:false
+  this.definition = (sequelize, DataTypes) => {
+    const Model = sequelize.define(
+      this.name,
+      {
+        firstname: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
+        lastname: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
+        birthday: {
+          type: DataTypes.DATE,
+          allowNull: false
+        },
+        email: {
+          type: DataTypes.STRING
+        },
+        tel: {
+          type: DataTypes.BIGINT
+        },
+        rights: {
+          type: DataTypes.BIGINT,
+          defaultValue: "0"
+        }
       },
-      lastname: {
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      birthday: {
-        type: DataTypes.DATE,
-        allowNull:false
-      },
-      email: {
-        type: DataTypes.STRING,
-      },
-      tel: {
-        type: DataTypes.BIGINT,
-      },
-      rights: {
-        type: DataTypes.BIGINT,
-        defaultValue: '0'
-      },
-		},
-		{
-			paranoid: true,
-			hooks: {}
-		});
+      {
+        paranoid: true,
+        hooks: {}
+      }
+    );
 
-		this.model = Model 
-		return Model 
-	}
-
-}
+    this.model = Model;
+    return Model;
+  };
+};

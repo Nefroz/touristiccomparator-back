@@ -1,37 +1,37 @@
 "use strict";
-const Generic = require('../core/genericModel');
+const Generic = require("../core/genericModel");
 
 module.exports = function Model(name = "details", alias = "Details") {
+  Generic.call(this);
 
-	Generic.call(this)
+  this.connexion = "sequelize";
+  this.parent = "/:entity";
+  this.name = name;
+  this.token = true;
+  this.alias = alias;
+  this.scopes = {};
 
-	this.connexion = "sequelize"
-	this.parent = "/:entity"
-	this.name = name
-	this.token = true 
-	this.alias = alias
-	this.scopes = {};
+  this.belongsTo = ["Reservations", "Ressources"];
+  this.hasMany = [];
 
-	this.belongsTo = ["Reservations", "Ressources"];
-	this.hasMany = [];
-  
-	this.model = undefined 
-	this.toInstall = true 
+  this.model = undefined;
+  this.toInstall = true;
 
-	this.definition = (sequelize, DataTypes) => {
+  this.definition = (sequelize, DataTypes) => {
+    const Model = sequelize.define(
+      this.name,
+      {
+        number: {
+          type: DataTypes.INTEGER(10)
+        }
+      },
+      {
+        paranoid: true,
+        hooks: {}
+      }
+    );
 
-		const Model = sequelize.define(this.name, {
-			number : {
-        	type : DataTypes.INTEGER(10)
-     		}
-		},
-		{
-			paranoid: true,
-			hooks: {}
-		});
-
-		this.model = Model 
-		return Model 
-	}
-
-}
+    this.model = Model;
+    return Model;
+  };
+};
