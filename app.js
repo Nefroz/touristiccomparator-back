@@ -15,7 +15,7 @@ const app = express();
 /*db.sequelize.sync({alter:true})*/
 // db.sequelize.sync({force:true})
 
-const ibookRoutes = require('./appHost/ibook');
+// const ibookRoutes = require('./appHost/ibook');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

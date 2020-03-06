@@ -116,6 +116,10 @@ module.exports = {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
+    getRandomFloat : (min, max, float=2) => {
+        return (Math.random() * (max - min + 1) + min).toFixed(float);
+    },
+
     sanitizeHtml : (html) => {
         return html.replace(/<[\s\S]*?>/gi, "")
     },

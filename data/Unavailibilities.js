@@ -42,6 +42,14 @@ module.exports = function Model(
       }
     );
 
+    Model.addHook("beforeBulkCreate", (options) => {
+      options.individualHooks = true 
+    })
+
+    Model.addHook("beforeCreate", (instance, options) => {
+      console.log(instance)
+    })
+
     this.model = Model;
     return Model;
   };

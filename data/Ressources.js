@@ -26,31 +26,30 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
           allowNull: false
         },
         pricingd: {
-          type: DataTypes.BIGINT,
+          type: DataTypes.FLOAT,
           allowNull: false
         },
         pricingh: {
-          type: DataTypes.BIGINT,
+          type: DataTypes.FLOAT,
           allowNull: false
         },
         gage: {
-          type: DataTypes.BIGINT,
-          allowNull: false
-        },
-        stock: {
-          type: DataTypes.BOOLEAN,
-          defaultValue: "1"
+          type: DataTypes.FLOAT,
+          allowNull: false,
+          defaultValue : 0,
         },
         description: {
           type: DataTypes.TEXT
         },
         validintern: {
           type: DataTypes.BOOLEAN,
-          allowNull: false
+          allowNull: false,
+          defaultValue : 1,
         },
         validextern: {
           type: DataTypes.BOOLEAN,
-          allowNull: false
+          allowNull: false, 
+          defaultValue : 1,
         }
       },
       {
@@ -58,6 +57,21 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
         hooks: {}
       }
     );
+
+    Model.addHook("beforeFind", (options) => {
+      if(options.req) {
+        const db = options.req.db 
+        options.include = options.include || []
+        options.include.push({ model : db.Unavailibilities })
+        options.include.push({
+          model : db.Ressources, include : [{
+            model : db.Ressources, include : [{
+              model : db.Ressources
+            }]
+          }]
+        })
+      }
+    })
 
     this.model = Model;
     return Model;
