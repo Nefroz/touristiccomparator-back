@@ -11,8 +11,8 @@ module.exports = function Model(name = "types", alias = "Types") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Ressources"];
-  this.hasMany = [];
+  this.belongsTo = [];
+  this.hasMany = ["Ressources"];
 
   this.model = undefined;
   this.toInstall = true;

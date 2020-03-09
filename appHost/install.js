@@ -52,7 +52,6 @@ module.exports = [
                         })
                     },
                     c => {
-
                         const ressources = []
                         for(var i=0; i<50; i++) {
                             const res = new Ressource().random()
@@ -65,7 +64,6 @@ module.exports = [
                         })
                     },
                     c => {
-
                         const ressources = []
                         for(var i=0; i<50; i++) {
                             const res = new Ressource().random()

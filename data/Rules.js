@@ -11,7 +11,7 @@ module.exports = function Model(name = "rules", alias = "Rules") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Ressources"];
+  this.belongsTo = ["Pricings"];
   this.hasMany = [];
 
   this.model = undefined;
@@ -21,15 +21,48 @@ module.exports = function Model(name = "rules", alias = "Rules") {
     const Model = sequelize.define(
       this.name,
       {
-        type: {
-          // promo, reduc, tva, forfait
-          type: DataTypes.STRING,
-          allowNull: false
+        name: {
+          type: DataTypes.STRING
         },
-        amount: {
-          type: DataTypes.INTEGER(12),
-          allowNull: false
-        }
+        percd: {
+          type: DataTypes.FLOAT,
+          allowNull: false,
+          defaultValue: "100"
+        },
+        perch: {
+          type: DataTypes.FLOAT,
+          allowNull: false,
+          defaultValue: "100"
+        },
+        percg: {
+          type: DataTypes.FLOAT,
+          allowNull: false,
+          defaultValue: "100"
+        },
+        reducd: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
+        reduch: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
+        reducg: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
+        fixedd: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
+        fixedh: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
+        fixedg: {
+          type: DataTypes.FLOAT,
+          allowNull: true,
+        },
       },
       {
         paranoid: true,

@@ -11,8 +11,8 @@ module.exports = function Model(name = "pricings", alias = "Pricings") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Ressources"];
-  this.hasMany = [];
+  this.belongsTo = [];
+  this.hasMany = ["Ressources", "Rules"];
   this.model = undefined;
   this.toInstall = true;
 
@@ -22,21 +22,6 @@ module.exports = function Model(name = "pricings", alias = "Pricings") {
       {
         name: {
           type: DataTypes.STRING
-        },
-        equipd: {
-          type: DataTypes.BIGINT
-        },
-        equiph: {
-          type: DataTypes.BIGINT
-        },
-        roomd: {
-          type: DataTypes.BIGINT
-        },
-        roomh: {
-          type: DataTypes.BIGINT
-        },
-        gage: {
-          type: DataTypes.BIGINT
         }
       },
       {

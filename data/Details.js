@@ -21,9 +21,7 @@ module.exports = function Model(name = "details", alias = "Details") {
     const Model = sequelize.define(
       this.name,
       {
-        number: {
-          type: DataTypes.INTEGER(10)
-        }
+
       },
       {
         paranoid: true,
