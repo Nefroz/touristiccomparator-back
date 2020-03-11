@@ -36,7 +36,8 @@ module.exports = function Model(name = "reservations", alias = "Reservations") {
           type: DataTypes.STRING
         },
         comment: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
+          defaultValue: ""
         },
         valid: {
           type: DataTypes.BOOLEAN,

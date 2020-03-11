@@ -11,8 +11,8 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Ressources","Types","Pricings"];
-  this.hasMany = ["Details","Addresses","Ressources","Unavailibilities","Users"];
+  this.belongsTo = ["Ressources","Types","Pricings","Addresses","Users"];
+  this.hasMany = ["Details","Ressources","Unavailibilities"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -49,7 +49,8 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
           defaultValue : 1,
         },
         description: {
-          type: DataTypes.TEXT
+          type: DataTypes.TEXT,
+          defaultValue : '',
         },
         validintern: {
           type: DataTypes.BOOLEAN,
@@ -77,6 +78,7 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
         options.include.push({ model : db.Details })
         options.include.push({ model : db.Addresses })
         options.include.push({ model : db.Users })
+        options.include.push({ model : db.Pricings })
         options.include.push({
           model : db.Ressources, include : [{
             model : db.Ressources, include : [{
