@@ -147,7 +147,6 @@ glob
         }
     })
 
-
 allRoutes.map( route => {
     let routeMethods = route.methods;
     addRouteMethods(routeMethods, route)

@@ -152,8 +152,8 @@ const ressources = [
 ]
 
 const types = [
-	"Voiture",
 	"Salle",
+	"Voiture",
 	"Outillage",
 	"Machine",
 	"Consommable",
