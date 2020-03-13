@@ -14,30 +14,6 @@ const Detail = require("../domain/details");
 const Utils = require("../core/Utils");
 const random = require("../domain/random");
 
-// Exemple de hardcoding
-                        // req.db.Types.bulkCreate([
-                        //     {
-                        //         name  : "Véhicules", 
-                        //     }, 
-                        //     {
-                        //         name  : "Mobiliers", 
-                        //     },
-                        //     {
-                        //         name  : "Salles", 
-                        //     },
-                        //     {
-                        //         name  : "Immobiliers", 
-                        //     },
-                        //     {
-                        //         name  : "Matériel", 
-                        //     },
-                        //     {
-                        //         name  : "Hifi", 
-                        //     },
-                        // ], {req : req}).then( () => {
-                        //     c(null)
-                        // })
-
 module.exports = [
 	{
         name: `install`,
@@ -62,7 +38,7 @@ module.exports = [
                     c => {
                         const pricings = []
                         for(var i=0; i<5; i++) {
-                            const res = new Pricing().random()
+                            const res = new Pricing().random(i)
                             pricings.push(res)
                         }
 
@@ -161,25 +137,21 @@ module.exports = [
                                     res.start = "01/01/2020"
                                     res.end = "10/01/2020"
                                     unavailibilities.push(res)
-                                    console.log("Test 1")
                                     break;
                                 case 1 : 
                                     res.start = "01/02/2020"
                                     res.end = "10/02/2020"
                                     unavailibilities.push(res)
-                                    console.log("Test 2")
                                     break;
                                 case 2 : 
                                     res.start = "01/03/2020"
                                     res.end = "10/03/2020"
                                     unavailibilities.push(res)
-                                    console.log("Test 3")
                                     break;
                                 case 3 : 
                                     res.start = "01/04/2020"
                                     res.end = "10/04/2020"
                                     unavailibilities.push(res)
-                                    console.log("Test 4")
                                     break;
                                 default : 
                                     break;

@@ -8,8 +8,8 @@ class Pricing {
         return this 
     }
 
-    random() {
-        this.name = random.get("pricings")
+    random(i) {
+        this.name = random.get("pricings", null, null, i)
         return this 
     }
 }

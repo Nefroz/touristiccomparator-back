@@ -12,7 +12,7 @@ module.exports = function Model(name = "users", alias = "Users") {
   this.scopes = {};
 
   this.belongsTo = ["Addresses"];
-  this.hasMany = ["Ressources"];
+  this.hasMany = ["Ressources","Details"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -46,7 +46,12 @@ module.exports = function Model(name = "users", alias = "Users") {
       },
       {
         paranoid: true,
-        hooks: {}
+        hooks: {}, 
+        scopes : {
+          simple : {
+            attributes : ["id", "firstname", "lastname"]
+          }
+        }
       }
     );
 

@@ -47,6 +47,14 @@ const pricings = [
 	"coronavirus",
 ]
 
+const color = [
+	"#FF0000",
+	"#00FF00",
+	"#0101DF",
+	"FFFF00",
+	"#5F04B4",
+]
+
 const streetname = [
 	"rue de la pizza",
 	"rue de la raclette",
@@ -317,11 +325,13 @@ module.exports = {
 				id = intervalRandom(0, rules.length-1)
 				return rules[id]
 			case "pricings" :
-				id = intervalRandom(0, pricings.length-1)
-				return pricings[id]
+				return pricings[index]
 			case "streetname" :
 				id = intervalRandom(0, streetname.length-1)
 				return streetname[id]
+			case "color" :
+				id = intervalRandom(0, color.length-1)
+				return color[id]
 			case "city" :
 				id = intervalRandom(0, city.length-1)
 				return city[id]

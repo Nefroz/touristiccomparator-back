@@ -13,9 +13,11 @@ class Ressource {
         if(this.perc>50) {this.pricingId = Utils.getRandomInt(1,5)}
         this.name = random.get("ressource")
         this.type = random.get("type")
+        this.color = random.get("color")
         this.pricingd = Utils.getRandomFloat(0,1500)
         this.pricingh = Utils.getRandomFloat(0,500)
         this.gage = Utils.getRandomFloat(0,1000)
+        this.capacity = Utils.getRandomInt(50,500)
         this.stock = Utils.getRandomInt(1,20)
         this.userId = Utils.getRandomInt(1,5)
         this.typeId = Utils.getRandomInt(1,7);

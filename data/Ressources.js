@@ -35,18 +35,21 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
         },
         gage: {
           type: DataTypes.FLOAT,
-          allowNull: false,
           defaultValue : 0,
         },
         stock: {
           type: DataTypes.BIGINT,
-          allowNull: false,
           defaultValue : 1,
+        },
+        color: {
+          type: DataTypes.STRING,
         },
         available:{
           type: DataTypes.BOOLEAN,
-          allowNull: false,
           defaultValue : 1,
+        },
+        capacity:{
+          type: DataTypes.BIGINT,
         },
         description: {
           type: DataTypes.TEXT,
@@ -82,7 +85,11 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
         options.include.push({
           model : db.Ressources, include : [{
             model : db.Ressources, include : [{
-              model : db.Ressources
+              model : db.Ressources, include : [{
+                model : db.Ressources, include : [{
+                  model : db.Ressources
+                }]
+              }]
             }]
           }]
         })

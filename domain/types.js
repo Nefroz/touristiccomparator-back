@@ -1,4 +1,3 @@
-
 const random = require("./random");
 const Utils = require("../core/Utils");
 

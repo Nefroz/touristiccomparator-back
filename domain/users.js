@@ -1,5 +1,6 @@
 const random = require("./random");
 const Utils = require("../core/Utils");
+const moment = require('moment');
 
 class Ressource {
 
@@ -11,7 +12,7 @@ class Ressource {
     random() {
         this.firstname = random.get("firstnames")
         this.lastname = random.get("lastnames")
-        this.birthday = random.get("birthdays")
+        this.birthday = moment(random.get("birthdays")).format('DD-MM-YYYY')
         this.email = random.get("emails")
         this.tel = Utils.getRandomInt(470000000,499999999)
         this.tel = "0"+this.tel;

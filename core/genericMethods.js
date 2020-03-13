@@ -244,7 +244,7 @@ const _post = (table, req, res, next) => {
                     if(_.isObject(instance) && instance.dataValues) {
                         res.response = instance 
                         req.focus = instance.id
-                        res.success.push("L'instance a été créée.")
+                        // res.success.push("L'instance a été créée.")
                         call(null)
                     }
                     else {
@@ -306,7 +306,7 @@ const _put = (table, req, res, next) => {
 
                         req.db[table].update(input, _options)
                         .then( () => {
-                            res.success.push("L'instance a été mise à jour.")
+                            // res.success.push("L'instance a été mise à jour.")
                             cb(null)
                         })
                         .catch( err => {
@@ -317,7 +317,6 @@ const _put = (table, req, res, next) => {
                         if(err) call(err)
                         else call(null)
                     })
-                        
                 }
                 else if(_.isObject(inputs)) {
                     req.db[table].update(inputs, options)
@@ -334,7 +333,6 @@ const _put = (table, req, res, next) => {
                             else if(_.isArray(instance) && instance.length===1) {
                                 res.response = instance[0].get() 
                             }
-                            res.success.push("L'instance a été mise à jour.")
                             call(null)
                         })
                         // .catch(e => {
@@ -380,7 +378,7 @@ const _delete = (table, req, res, next) => {
                 async.each(instances, (instance, cb) => {
                     instance.dataValues.flag = "deleted"
                     res.response.push( instance.get() )
-                    res.success.push("L'instance a été supprimée.")
+                    // res.success.push("L'instance a été supprimée.")
                     instance.destroy({req : req})
                     cb(null)
                 }, () => {
