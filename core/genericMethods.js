@@ -155,7 +155,7 @@ const _get = (table, req, res, next) => {
                     }
                 })
             } else call(null, false)
-        }, 
+        },
         (skip, call) => {
             if(skip) call(null)
             else {

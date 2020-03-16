@@ -10,6 +10,7 @@ class Detail {
 
     random() {
         this.ressourceId = Utils.getRandomInt(1,7)
+        this.customerId = Utils.getRandomInt(1,10)
         return this 
     }
 }

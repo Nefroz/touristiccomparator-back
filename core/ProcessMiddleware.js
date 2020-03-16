@@ -41,9 +41,7 @@ module.exports = {
                     }
                     else {
                         logger.log( error )
-
                         slack.error(error)
-
                     }
                 })
             }

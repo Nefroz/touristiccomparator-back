@@ -5,6 +5,7 @@ const moment = require("moment");
 const Ressource = require("../domain/ressource");
 const Type = require("../domain/types");
 const User = require("../domain/users");
+const Customer = require("../domain/customers");
 const Addresse = require("../domain/addresses");
 const Pricing = require("../domain/pricings");
 const Rule = require("../domain/rules");
@@ -76,6 +77,17 @@ module.exports = [
                         }
 
                         req.db.Users.bulkCreate(users, {req : req}).then( () => {
+                            c(null)
+                        })
+                    },
+                    c => {
+                        const customers = []
+                        for(var i=0; i<10; i++) {
+                            const res = new Customer().random()
+                            customers.push(res)
+                        }
+
+                        req.db.Customers.bulkCreate(customers, {req : req}).then( () => {
                             c(null)
                         })
                     },

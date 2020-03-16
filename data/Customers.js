@@ -1,7 +1,7 @@
 "use strict";
 const Generic = require("../core/genericModel");
 
-module.exports = function Model(name = "users", alias = "Users") {
+module.exports = function Model(name = "customers", alias = "Customers") {
   Generic.call(this);
 
   this.connexion = "sequelize";
@@ -12,7 +12,7 @@ module.exports = function Model(name = "users", alias = "Users") {
   this.scopes = {};
 
   this.belongsTo = ["Addresses"];
-  this.hasMany = ["Ressources"];
+  this.hasMany = ["Details"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -38,10 +38,6 @@ module.exports = function Model(name = "users", alias = "Users") {
         },
         tel: {
           type: DataTypes.BIGINT
-        },
-        rights: {
-          type: DataTypes.BOOLEAN,
-          defaultValue: "0"
         }
       },
       {

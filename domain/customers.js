@@ -2,7 +2,7 @@ const random = require("./random");
 const Utils = require("../core/Utils");
 const moment = require('moment');
 
-class Users {
+class Ressource {
 
     constructor(data) {
         Object.assign(this, data)
@@ -21,4 +21,4 @@ class Users {
     }
 }
 
-module.exports = Users
+module.exports = Ressource
