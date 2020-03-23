@@ -50,7 +50,7 @@ module.exports = [
                     c => {
                         const rules = []
                         for(var i=0; i<15; i++) {
-                            const res = new Rule().random()
+                            const res = new Rule().random(i)
                             rules.push(res)
                         }
 

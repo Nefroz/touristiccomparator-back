@@ -8,8 +8,8 @@ class Rule {
         return this 
     }
 
-    random() {
-        this.name = random.get("rules")
+    random(i) {
+        this.name = random.get("rules", null, null, i)
         this.percd =  Utils.getRandomFloat(0,150)
         this.perch = Utils.getRandomFloat(0,150)
         this.percg = Utils.getRandomFloat(0,150)

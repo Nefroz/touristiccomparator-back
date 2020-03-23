@@ -10,6 +10,7 @@ class Pricing {
 
     random(i) {
         this.name = random.get("pricings", null, null, i)
+        this.pricingtype = Utils.getRandomInt(0,1);
         return this 
     }
 }

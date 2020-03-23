@@ -22,29 +22,29 @@ function dateRandom(min, max) {
 }
 
 const rules = [
-	"rule01",
-	"rule02",
-	"rule03",
-	"rule04",
-	"rule05",
-	"rule06",
-	"rule07",
-	"rule08",
-	"rule09",
-	"rule10",
-	"rule11",
-	"rule12",
-	"rule13",
-	"rule14",
-	"rule15",
+	"Rule01",
+	"Rule02",
+	"Rule03",
+	"Rule04",
+	"Rule05",
+	"Rule06",
+	"Rule07",
+	"Rule08",
+	"Rule09",
+	"Rule10",
+	"Rule11",
+	"Rule12",
+	"Rule13",
+	"Rule14",
+	"Rule15",
 ]
 
 const pricings = [
-	"standard",
-	"asbl",
-	"entreprise",
-	"promo",
-	"coronavirus",
+	"Standard",
+	"Asbl",
+	"Entreprise",
+	"Promo",
+	"Coronavirus",
 ]
 
 const color = [
@@ -322,8 +322,7 @@ module.exports = {
 			case "typename" : 
 				return types[index]
 			case "rules" :
-				id = intervalRandom(0, rules.length-1)
-				return rules[id]
+				return rules[index]
 			case "pricings" :
 				return pricings[index]
 			case "streetname" :
