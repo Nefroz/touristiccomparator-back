@@ -28,7 +28,7 @@ module.exports = function Model(name = "addresses", alias = "Addresses") {
           type: DataTypes.BIGINT
         },
         streetnumber: {
-          type: DataTypes.BIGINT
+          type: DataTypes.STRING
         },
         locality: {
           type: DataTypes.STRING

@@ -8,9 +8,10 @@ class Reservation {
         return this 
     }
 
-    random() {
-        this.object = random.get("objects")
+    random(i) {
+        this.object = random.get("objects", null, null, i)
         this.activity = random.get("activity")
+        this.valid = "0"
         return this 
     }
 }

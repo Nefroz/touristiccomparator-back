@@ -8,8 +8,8 @@ class Unavailibility {
         return this 
     }
 
-    random() {
-        this.name = random.get("unavailibilities")
+    random(i) {
+        this.name = random.get("unavailibilities", null, null, i)
         this.ressourceId = Utils.getRandomInt(1,50)
         return this 
     }

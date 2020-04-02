@@ -50,6 +50,14 @@ module.exports = function Model(
       console.log(instance);
     });
 
+    Model.addHook("beforeFind", (options) => {
+      const req = options.req 
+      if(req && req.db) {
+        options.include = options.include || []
+        options.include.push({ model : req.db.Ressources })
+      }
+    })
+
     this.model = Model;
     return Model;
   };

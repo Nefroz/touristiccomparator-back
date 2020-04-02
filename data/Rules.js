@@ -11,7 +11,7 @@ module.exports = function Model(name = "rules", alias = "Rules") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Pricings"];
+  this.belongsTo = ["Pricings", "Ressources", "Types"];
   this.hasMany = [];
 
   this.model = undefined;
@@ -21,47 +21,12 @@ module.exports = function Model(name = "rules", alias = "Rules") {
     const Model = sequelize.define(
       this.name,
       {
-        name: {
-          type: DataTypes.STRING
+        category : {
+          type : DataTypes.STRING, // percd,perch,percg,reducd,reduch,reducg,fixedd,fixedh,fixedg 
         },
-        percd: {
+        value : {
           type: DataTypes.FLOAT,
-          allowNull: false,
-          defaultValue: "100"
-        },
-        perch: {
-          type: DataTypes.FLOAT,
-          allowNull: false,
-          defaultValue: "100"
-        },
-        percg: {
-          type: DataTypes.FLOAT,
-          allowNull: false,
-          defaultValue: "100"
-        },
-        reducd: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
-        },
-        reduch: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
-        },
-        reducg: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
-        },
-        fixedd: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
-        },
-        fixedh: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
-        },
-        fixedg: {
-          type: DataTypes.FLOAT,
-          allowNull: true,
+          defaultValue: 0
         },
       },
       {

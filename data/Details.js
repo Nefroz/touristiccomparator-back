@@ -21,7 +21,12 @@ module.exports = function Model(name = "details", alias = "Details") {
     const Model = sequelize.define(
       this.name,
       {
-
+        reduccategory: {
+          type: DataTypes.BIGINT
+        },
+        reducvalue: {
+          type: DataTypes.BIGINT
+        }
       },
       {
         paranoid: true,

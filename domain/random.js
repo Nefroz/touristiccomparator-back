@@ -21,24 +21,6 @@ function dateRandom(min, max) {
 	return min.clone().add(randmin, "minutes").add(rand, "days").add(randhour, "hours")
 }
 
-const rules = [
-	"Rule01",
-	"Rule02",
-	"Rule03",
-	"Rule04",
-	"Rule05",
-	"Rule06",
-	"Rule07",
-	"Rule08",
-	"Rule09",
-	"Rule10",
-	"Rule11",
-	"Rule12",
-	"Rule13",
-	"Rule14",
-	"Rule15",
-]
-
 const pricings = [
 	"Standard",
 	"Asbl",
@@ -121,14 +103,14 @@ const emails = [
 ]
 
 const objects = [
-	"Reunion hebdomadaire des joueurs de pokemon Go",
+	"Reunion hebdomadaire des 17 joueurs de pokemon Go restants",
 	"Meeting des antivax pro coronavirus",
 	"Rassemblement des jeunes pour la libération de Rafi d'Inforius",
 	"Tournoi de roulette russe",
 	"Meeting pour que Ced nous ramene enfin des pates le midi",
 	"Meeting interne avec Ceddom pour savoir ou ce que c'est qu'on va bien manger ce vendredi",
-	"Sommet du G12 pour envoyer des gifs sur slack",
-	"Récréation intergalactique",
+	"Sommet du G12 pour envoyer des gifs qualitatifs sur slack",
+	"Invasion extraterrestre",
 	"Tryhard sur League Of Legends pour enfin devenir bon",
 	"Test de warcraft 3",
 ]
@@ -167,6 +149,13 @@ const types = [
 	"Consommable",
 	"Hifi",
 	"Mobiliers"
+]
+
+const unavailibilities = [
+	"Réunion du G20",
+	"BBQ annuel",
+	"Tournoi de pétanque des octogénaires",
+	"Dégustation de pangolin frit"
 ]
 
 const firstnames = [
@@ -319,10 +308,10 @@ module.exports = {
             case "ressource" : 
 				id = intervalRandom(0, ressources.length-1)
 				return ressources[id]
+			case "unavailibilities" : 
+			return unavailibilities[index]
 			case "typename" : 
 				return types[index]
-			case "rules" :
-				return rules[index]
 			case "pricings" :
 				return pricings[index]
 			case "streetname" :
@@ -344,8 +333,7 @@ module.exports = {
 				id = intervalRandom(0, birthdays.length-1)
 				return birthdays[id]
 			case "objects" :
-				id = intervalRandom(0, objects.length-1)
-				return objects[id]
+				return objects[index]
 			case "activity" :
 				id = intervalRandom(0, activity.length-1)
 				return activity[id]	

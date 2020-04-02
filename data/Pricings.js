@@ -12,7 +12,7 @@ module.exports = function Model(name = "pricings", alias = "Pricings") {
   this.scopes = {};
 
   this.belongsTo = [];
-  this.hasMany = ["Ressources", "Rules"];
+  this.hasMany = ["Rules"];
   this.model = undefined;
   this.toInstall = true;
 
@@ -35,6 +35,18 @@ module.exports = function Model(name = "pricings", alias = "Pricings") {
     );
 
     this.model = Model;
+
+    Model.addHook("beforeFind", (options) => {
+      const req = options.req 
+      if(req && req.db) {
+        options.include = options.include || []
+        options.include.push({ model : req.db.Rules, include : [
+          { model : req.db.Types },
+          { model : req.db.Ressources },
+        ] })
+      }
+    })
+
     return Model;
   };
 };

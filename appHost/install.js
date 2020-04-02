@@ -143,7 +143,7 @@ module.exports = [
 
                         const unavailibilities = []
                         for(var i=0; i<4; i++) {
-                            let res = new Unavailibility().random()
+                            let res = new Unavailibility().random(i)
                             switch(i) {
                                 case 0 : 
                                     res.start = "01/01/2020"
@@ -178,7 +178,7 @@ module.exports = [
                         const reservations = []
                         let i=0
                         while(i<10) {
-                            let res = new Reservation().random()
+                            let res = new Reservation().random(i)
                             switch(i) {
                                 case 0 : 
                                     res.start = "01/01/2021"
