@@ -23,7 +23,8 @@ module.exports = function Model(name = "types", alias = "Types") {
       {
         name: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          required: true
         }
       },
       {
