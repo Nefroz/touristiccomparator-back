@@ -11,7 +11,7 @@ module.exports = function Model(name = "reservations", alias = "Reservations") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = [];
+  this.belongsTo = ["Customers","Pricings"];
   this.hasMany = ["Details","Files"];
 
   this.model = undefined;
@@ -41,8 +41,12 @@ module.exports = function Model(name = "reservations", alias = "Reservations") {
         },
         valid: {
           type: DataTypes.BOOLEAN,
-          defaultValue: "0"
-        }
+          defaultValue: "0" //1 = valid, 0 = needs to be validated
+        },
+        paymentmode: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: "0" //1 = day, 0 = hour
+        },
       },
       {
         paranoid: true,

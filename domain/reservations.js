@@ -11,6 +11,9 @@ class Reservation {
     random(i) {
         this.object = random.get("objects", null, null, i)
         this.activity = random.get("activity")
+        this.customerId = Utils.getRandomInt(1,10);
+        this.pricingId = Utils.getRandomInt(1,5);
+        this.paymentmode = Utils.getRandomInt(0,1);
         this.valid = "0"
         return this 
     }

@@ -223,7 +223,6 @@ const _post = (table, req, res, next) => {
             }
         },
         call => {
-            console.log("Coucou je suis le req.body du post :", req.body)
 
             const options = {
                 req : req, 
@@ -288,8 +287,7 @@ const _put = (table, req, res, next) => {
     }
     else {
         async.waterfall([
-            call => {   
-                console.log("Coucou je suis le req.body du put :", req.body)        
+            call => {       
                 if(_.isArray(inputs) && inputs.length>0) {
 
                     req.where = {id : []}
