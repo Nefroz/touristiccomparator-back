@@ -34,6 +34,9 @@ module.exports = function Model(
         end: {
           type: DataTypes.DATE,
           allowNull: false
+        },
+        distinctId: {
+          type: DataTypes.BIGINT
         }
       },
       {

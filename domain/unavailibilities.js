@@ -10,6 +10,7 @@ class Unavailibility {
 
     random(i) {
         this.name = random.get("unavailibilities", null, null, i)
+        this.distinctId = i+1
         this.ressourceId = Utils.getRandomInt(1,50)
         return this 
     }
