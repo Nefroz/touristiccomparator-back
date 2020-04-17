@@ -22,6 +22,7 @@ class Ressource {
         this.userId = Utils.getRandomInt(1,5)
         this.typeId = Utils.getRandomInt(1,7);
         this.addressId = Utils.getRandomInt(1,10);
+        this.description = "Lorem Ipsum Dolor Sit Amet"
         return this 
     }
 }

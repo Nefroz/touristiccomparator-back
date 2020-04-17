@@ -111,7 +111,7 @@ const objects = [
 	"Meeting interne avec Ceddom pour savoir ou ce que c'est qu'on va bien manger ce vendredi",
 	"Sommet du G12 pour envoyer des gifs qualitatifs sur slack",
 	"Invasion extraterrestre",
-	"Tryhard sur League Of Legends pour enfin devenir bon",
+	"Tryhard sur Tetris pour enfin devenir bon",
 	"Test de warcraft 3",
 ]
 
