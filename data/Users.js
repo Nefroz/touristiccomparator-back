@@ -11,8 +11,8 @@ module.exports = function Model(name = "users", alias = "Users") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Addresses"];
-  this.hasMany = ["Ressources"];
+  this.belongsTo = [""];
+  this.hasMany = ["CocktailsUsers"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -38,20 +38,11 @@ module.exports = function Model(name = "users", alias = "Users") {
         },
         tel: {
           type: DataTypes.BIGINT
-        },
-        rights: {
-          type: DataTypes.BOOLEAN,
-          defaultValue: "0"
         }
       },
       {
         paranoid: true,
-        hooks: {}, 
-        scopes : {
-          simple : {
-            attributes : ["id", "firstname", "lastname"]
-          }
-        }
+        hooks: {}
       }
     );
 

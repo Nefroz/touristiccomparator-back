@@ -1,7 +1,7 @@
 const random = require("./random");
 const Utils = require("../core/Utils");
 
-class Detail {
+class Ressources {
 
     constructor(data) {
         Object.assign(this, data)
@@ -9,10 +9,9 @@ class Detail {
     }
 
     random() {
-        this.ressourceId = Utils.getRandomInt(1,7)
-        this.customerId = Utils.getRandomInt(1,10)
+        this.name = random.get("ressources")
         return this 
     }
 }
 
-module.exports = Detail
+module.exports = Ressources

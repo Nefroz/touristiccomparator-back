@@ -21,159 +21,65 @@ function dateRandom(min, max) {
 	return min.clone().add(randmin, "minutes").add(rand, "days").add(randhour, "hours")
 }
 
-const pricings = [
-	"Standard",
-	"Asbl",
-	"Entreprise",
-	"Promo",
-	"Coronavirus",
-]
-
-const color = [
-	"#FF0000",
-	"#00FF00",
-	"#0101DF",
-	"FFFF00",
-	"#5F04B4",
-]
-
-const streetname = [
-	"rue de la pizza",
-	"rue de la raclette",
-	"rue du barbecue",
-	"rue de la frite",
-	"rue du kebab",
-	"rue de la choucroute",
-	"rue de la tartiflette",
-	"rue du mac'n'cheese",
-	"rue de la lasagne",
-	"rue du wok",
-]
-
-const city = [
-	"Namur",
-	"Liège",
-	"Charleroi",
-	"Mons",
-	"Arlon",
-	"Luxembourg",
-	"Bruxelles",
-	"Paris",
-	"Berlin",
-	"Vienne",
-]
-
-const country = [
-	"Belgique",
-	"Pays-Bas",
-	"France",
-	"Italie",
-	"Allemagne",
-	"Japon",
-	"USA",
-	"Australie",
-	"Canada",
-	"Venezuela",
-]
-
-const birthdays = [
-	"01-01-2001",
-	"02-02-2002",
-	"03-03-2003",
-	"04-04-2004",
-	"05-05-2005",
-	"06-06-2006",
-	"07-07-2007",
-	"08-08-2008",
-	"09-09-2009",
-	"10-10-2010",
-]
-
-const emails = [
-	"testylol@gmail.com",
-	"testywow@gmail.com",
-	"testyboum@gmail.com",
-	"testyratata@gmail.com",
-	"teamsalameche@gmail.com",
-	"cafaitbeaucoupdemails@gmail.com",
-	"jaiplusdidees@gmail.com",
-	"ilfautencoretroisemails@gmail.com",
-	"questcequejepeuxmettre@gmail.com",
-	"enfinfini@gmail.com",
-]
-
-const objects = [
-	"Reunion hebdomadaire des 17 joueurs de pokemon Go restants",
-	"Meeting des antivax pro coronavirus",
-	"Rassemblement des jeunes pour la libération de Rafi d'Inforius",
-	"Tournoi de roulette russe",
-	"Meeting pour que Ced nous ramene enfin des pates le midi",
-	"Meeting interne avec Ceddom pour savoir ou ce que c'est qu'on va bien manger ce vendredi",
-	"Sommet du G12 pour envoyer des gifs qualitatifs sur slack",
-	"Invasion extraterrestre",
-	"Tryhard sur Tetris pour enfin devenir bon",
-	"Test de warcraft 3",
-]
-
-const activity = [
-	"Reunion",
-	"Meeting sportif",
-	"Meeting politique",
-	"Meeting sandwich",
-	"Afterwork Pizzeria",
-	"Afterwork Bowling",
-	"Afterwork Lasergame",
-	"Afterwork Drift, Tuning & Jupiler",
-	"Afterwork Saucisse Bacon & Patates chaudes",
-	"Afterwork voyage en Polynésie"
-]
-
 const ressources = [
-    "Salle des fêtes",
-    "Samsung S10+",
-    "Casque Bose",
-    "Tasse",
-    "Pizza 4 fromages",
-    "Audi A5",
-    "Porsche carrera 450ch",
-    "Moniteur Philips 19``",
-    "Fujitsu Ordinateur",
-    "PC portable LG",
-]
-
-const types = [
-	"Salle",
-	"Voiture",
-	"Outillage",
-	"Machine",
-	"Consommable",
-	"Hifi",
-	"Mobiliers"
-]
-
-const unavailibilities = [
-	"Réunion du G20",
-	"BBQ annuel",
-	"Tournoi de pétanque des octogénaires",
-	"Dégustation de pangolin frit"
+	"Pilon",
+	"Mortier",
+	"Shaker",
+	"Verre à pied",
+	"Grand verre",
+	"Rhum Blanc",
+	"Rhum Brun",
+	"Whisky",
+	"Cuillere",
+	"Creme fraiche",
+	"Curacao",
+	"Pisang",
+	"Safari",
+	"Passoa",
+	"Eau Plate",
+	"Eau Pétillante",
+	"Sucre",
+	"Feuilles de menthe",
+	"Jus d'orange",
+	"Jus de pomme",
+	"Jus d'ananas",
+	"Sirop de Grenadine",
+	"Sirop de menthe",
+	"Get27",
+	"Get31",
+	"Coca cola",
+	"Sprite",
+	"Ice Tea",
+	"Martini Royal",
+	"Vermouth",
+	"Martini Rouge",
+	"Martini Blanco",
+	"Vodka",
+	"Amaretto",
+	"Glacons",
+	"Jus de cranberry",
+	"Blanc d'oeuf",
+	"Jaune d'oeuf",
+	"Jus de fraise",
+	"Biere Pils"
 ]
 
 const firstnames = [
-	"Dylan", 
-	"Aubry", 
-	"Rafi", 
-	"Ced", 
-	"Dominique", 
-	"Véronique", 
-	"Sarah", 
-	"Khmaies", 
-	"Xav", 
-	"Denis", 
-	"Mario", 
-	"Naëlle", 
-	"Amandine", 
-	"Jessica", 
-	"Hélène",
+	"DYLAN", 
+	"AUBRY", 
+	"RAFI", 
+	"CED", 
+	"DOMINIQUE", 
+	"VERONIQUE", 
+	"SARAH", 
+	"KHMAIES", 
+	"XAV", 
+	"DENIS", 
+	"MARIO", 
+	"NAELLE", 
+	"AMANDINE", 
+	"JESSICA", 
+	"HELENE",
 	"ADÉLAÏDE",
 	"ADÈLE",
 	"AGATHE",
@@ -294,6 +200,34 @@ const lastnames = [
 	"Su", "Frère", "Du Château du dequème d'acost", "Alost", "Michel", "AlbertVille", "Hajji", "Dinvrouille", "Mancette", "Denomeranguay"
 ]
 
+const cocktails = [
+	"Mojito",
+	"Sex On The Beach",
+	"Cuba Libre",
+	"Long Island",
+	"Jaggerbomber",
+	"Spritz",
+	"Gin Tonic",
+	"Tequila Sunrise",
+	"Pina Colada",
+	"Whisky Sour",
+	"Margarita",
+	"Caipirinha",
+	"Cosmopolitan",
+	"Daiquiri",
+	"Bloody Mary",
+	"Vodka Cranberry",
+	"Mimosa",
+	"Mai Tai",
+	"Sangria",
+	"Manhattan",
+	"Bellini",
+	"Tom Collins",
+	"Mojito Fraise",
+	"White Russian",
+	"Old Fashioned",
+]
+
 module.exports = {
 	intervalRandom : intervalRandom,
 	get : (type, min=null, max=null, index = null) => {
@@ -304,39 +238,13 @@ module.exports = {
 				return firstnames[id]
 			case "lastnames" : 
 				id = intervalRandom(0, lastnames.length-1)
-                return lastnames[id]
-            case "ressource" : 
+				return lastnames[id]
+			case "cocktails" : 
+				id = intervalRandom(0, cocktails.length-1)
+				return cocktails[id]
+            case "ressources" : 
 				id = intervalRandom(0, ressources.length-1)
 				return ressources[id]
-			case "unavailibilities" : 
-			return unavailibilities[index]
-			case "typename" : 
-				return types[index]
-			case "pricings" :
-				return pricings[index]
-			case "streetname" :
-				id = intervalRandom(0, streetname.length-1)
-				return streetname[id]
-			case "color" :
-				id = intervalRandom(0, color.length-1)
-				return color[id]
-			case "city" :
-				id = intervalRandom(0, city.length-1)
-				return city[id]
-			case "country" :
-				id = intervalRandom(0, country.length-1)
-				return country[id]
-			case "emails" :
-				id = intervalRandom(0, emails.length-1)
-				return emails[id]
-			case "birthdays" :
-				id = intervalRandom(0, birthdays.length-1)
-				return birthdays[id]
-			case "objects" :
-				return objects[index]
-			case "activity" :
-				id = intervalRandom(0, activity.length-1)
-				return activity[id]	
 			case "hour" : 
 				return hourRandom( moment(min, "HH:mm"), moment(max, "HH:mm") )
 			case "date" : 

@@ -1,7 +1,8 @@
 const random = require("./random");
 const Utils = require("../core/Utils");
+const moment = require('moment');
 
-class Rule {
+class Views {
 
     constructor(data) {
         Object.assign(this, data)
@@ -9,11 +10,39 @@ class Rule {
     }
 
     random() {
-        this.category = Utils.getRandomInt(1,9)
-        this.value = Utils.getRandomInt(0,100)
-        this.pricingId = Utils.getRandomInt(1,5)
+        this.date = random.get("date")
         return this 
     }
 }
 
-module.exports = Rule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = Users

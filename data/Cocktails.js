@@ -1,10 +1,7 @@
 "use strict";
 const Generic = require("../core/genericModel");
 
-module.exports = function Model(
-  name = "configuration",
-  alias = "Configuration"
-) {
+module.exports = function Model(name = "cocktails", alias = "Cocktails") {
   Generic.call(this);
 
   this.connexion = "sequelize";
@@ -14,8 +11,8 @@ module.exports = function Model(
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = [];
-  this.hasMany = [];
+  this.belongsTo = [""];
+  this.hasMany = ["RessourcesCocktails,CocktailsUsers"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -26,8 +23,8 @@ module.exports = function Model(
       {
         name: {
           type: DataTypes.STRING,
-          unique: true
-        }
+          allowNull: false
+        },
       },
       {
         paranoid: true,
