@@ -21,24 +21,44 @@ module.exports = function Model(name = "users", alias = "Users") {
     const Model = sequelize.define(
       this.name,
       {
+        name: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
         firstname: {
           type: DataTypes.STRING,
           allowNull: false
         },
-        lastname: {
+        tel: {
           type: DataTypes.STRING,
-          allowNull: false
+        },
+        email: {
+          type: DataTypes.STRING,
         },
         birthday: {
           type: DataTypes.DATE,
-          allowNull: false
         },
-        email: {
-          type: DataTypes.STRING
+        streetname: {
+          type: DataTypes.STRING,
         },
-        tel: {
-          type: DataTypes.BIGINT
-        }
+        city: {
+          type: DataTypes.STRING,
+        },
+        streetnumber: {
+          type: DataTypes.STRING,
+        },
+        postalcode: {
+          type: DataTypes.STRING,
+        },
+        country: {
+          type: DataTypes.STRING,
+        },
+        pseudo: {
+          type: DataTypes.STRING,
+        },
+        password: {
+          type: DataTypes.STRING,
+        },
       },
       {
         paranoid: true,

@@ -26,7 +26,6 @@ module.exports = (database) => {
 	db.root_sequelize = connexion.sequelize(ROOT);
 
 	if(_.isString(database) && _.isObject(databases[database])) {
-		//"Ca existe déjà :) on va pas reconstruire hein"
 		return databases[database]
 	}
 	else {

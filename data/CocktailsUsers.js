@@ -21,6 +21,15 @@ module.exports = function Model(name = "cocktailsusers", alias = "CocktailsUsers
     const Model = sequelize.define(
       this.name,
       {
+        FavoriteOrNotationOrComment: { // Est ce un ajout aux favoris(0), une notation(1) d'un cocktail,ou un commentaire(2)?
+          type: DataTypes.INT,
+        },
+        points: { // Si notation, quelle valeur?
+          type: DataTypes.INT,
+        },
+        text: { // Si commentaire, quelle valeur?
+          type: DataTypes.INT,
+        },
       },
       {
         paranoid: true,

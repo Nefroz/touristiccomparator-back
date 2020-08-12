@@ -2,16 +2,8 @@
 const logger = require('tracer').console({});
 const async = require("async");
 const moment = require("moment");
-const Ressource = require("../domain/ressource");
-const Type = require("../domain/types");
+const Ressource = require("../domain/ressources");
 const User = require("../domain/users");
-const Customer = require("../domain/customers");
-const Addresse = require("../domain/addresses");
-const Pricing = require("../domain/pricings");
-const Rule = require("../domain/rules");
-const Unavailibility = require("../domain/unavailibilities");
-const Reservation = require("../domain/reservations");
-const Detail = require("../domain/details");
 const Utils = require("../core/Utils");
 const random = require("../domain/random");
 

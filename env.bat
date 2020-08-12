@@ -1,4 +1,3 @@
 set MYSQL_USER=root
-set MYSQL_PASSWORD=root
-set MYSQL_PREFIX=imobi_
+set MYSQL_PASSWORD=stevendemoor
 set NODE_ENV=developpement
