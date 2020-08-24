@@ -11,7 +11,7 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = [""];
+  this.belongsTo = [];
   this.hasMany = ["RessourcesCocktails"];
 
   this.model = undefined;
@@ -23,7 +23,8 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
       {
         name: { //nom de la ressource
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          defaultValue: ""
         }
       },
       {

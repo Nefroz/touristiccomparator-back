@@ -11,8 +11,8 @@ module.exports = function Model(name = "ressourcescocktails", alias = "Ressource
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Ressources,Cocktails"];
-  this.hasMany = [""];
+  this.belongsTo = ["Ressources","Cocktails"];
+  this.hasMany = [];
 
   this.model = undefined;
   this.toInstall = true;
@@ -28,7 +28,7 @@ module.exports = function Model(name = "ressourcescocktails", alias = "Ressource
           type: DataTypes.BOOLEAN,
         },
         quantity: { //ex: 1,30,5
-          type: DataTypes.INT,
+          type: DataTypes.BIGINT,
         },
         typeofquantity: { // ex:feuilles,centilitres,grammes
           type: DataTypes.STRING,

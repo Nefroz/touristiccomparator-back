@@ -11,7 +11,7 @@ module.exports = function Model(name = "users", alias = "Users") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = [""];
+  this.belongsTo = [];
   this.hasMany = ["CocktailsUsers"];
 
   this.model = undefined;
@@ -23,11 +23,13 @@ module.exports = function Model(name = "users", alias = "Users") {
       {
         name: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false, 
+          defaultValue: ""
         },
         firstname: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false, 
+          defaultValue: ""
         },
         tel: {
           type: DataTypes.STRING,

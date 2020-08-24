@@ -1,7 +1,7 @@
 "use strict";
 const Generic = require("../core/genericModel");
 
-module.exports = function Model(name = "cocktails", alias = "Cocktails") {
+module.exports = function Model(name = "contacts", alias = "Contacts") {
   Generic.call(this);
 
   this.connexion = "sequelize";
@@ -12,7 +12,7 @@ module.exports = function Model(name = "cocktails", alias = "Cocktails") {
   this.scopes = {};
 
   this.belongsTo = [];
-  this.hasMany = ["RessourcesCocktails","CocktailsUsers"];
+  this.hasMany = [];
 
   this.model = undefined;
   this.toInstall = true;
@@ -21,25 +21,18 @@ module.exports = function Model(name = "cocktails", alias = "Cocktails") {
     const Model = sequelize.define(
       this.name,
       {
-        name: { //nom du cocktail
+        subject: { //nom du cocktail
           type: DataTypes.STRING,
           allowNull: false,
           defaultValue:""
         },
-        isAlcohol: { //cocktail ou mocktail?
-          type: DataTypes.BOOLEAN,
-        },
-        price: { //De 1 a 3, la valeur du prix du cocktail
+        userId: {
           type: DataTypes.STRING,
         },
-        difficulty: { //De 1 a 3, la valeur de la difficulté de réalisation du cocktail
+        text: {
           type: DataTypes.STRING,
-        },
-        degree: { //De 0 a 100, la teneur en alcool du cocktail, mocktail=0
-          type: DataTypes.STRING,
-        },
-        volume: { //De 1 a 4, pour shooter, petit verre, verre normal, grand verre
-          type: DataTypes.STRING,
+          allowNull: false,
+          defaultValue:""
         },
       },
       {

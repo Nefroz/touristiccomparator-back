@@ -2,7 +2,7 @@ const random = require("./random");
 const Utils = require("../core/Utils");
 const moment = require('moment');
 
-class Views {
+class Contacts {
 
     constructor(data) {
         Object.assign(this, data)
@@ -10,10 +10,11 @@ class Views {
     }
 
     random() {
-        this.date = moment(random.get("birthdays")).format('DD-MM-YYYY')
-        this.cocktailId = Utils.getRandomInt(0,49)
+        this.subject = random.get("subject")
+        this.userId = Utils.getRandomInt(0,49)
+        this.text = random.get("text")
         return this 
     }
 }
 
-module.exports = Views
+module.exports = Contacts

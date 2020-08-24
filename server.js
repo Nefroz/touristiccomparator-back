@@ -41,7 +41,7 @@ const errorHandler = error => {
 app.use(cors())
 
 const router = require("./core/buildRoutes").router
-app.use("/api/imobi/", router);
+app.use("/api/cocktailito/", router);
 
 const server = http.createServer(app);
 server.on('error', errorHandler);

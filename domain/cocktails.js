@@ -10,6 +10,10 @@ class Cocktails {
 
     random() {
         this.name = random.get("cocktails")
+        this.isAlcohol = Utils.getRandomInt(0,1)
+        this.price = Utils.getRandomInt(1,3)
+        this.difficulty = Utils.getRandomInt(1,3)
+        this.volume = Utils.getRandomInt(1,3)
         return this 
     }
 }

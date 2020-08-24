@@ -11,8 +11,8 @@ module.exports = function Model(name = "views", alias = "Views") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Cocktails"];
-  this.hasMany = [""];
+  this.belongsTo = [];
+  this.hasMany = ["Cocktails"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -23,7 +23,8 @@ module.exports = function Model(name = "views", alias = "Views") {
       {
         date: {
           type: DataTypes.DATE,
-          allowNull: false
+          allowNull: false,
+          defaultValue: DataTypes.NOW
         }
       },
       {

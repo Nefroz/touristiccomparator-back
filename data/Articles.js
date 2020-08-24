@@ -11,8 +11,8 @@ module.exports = function Model(name = "articles", alias = "Articles") {
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = [""];
-  this.hasMany = [""];
+  this.belongsTo = [];
+  this.hasMany = [];
 
   this.model = undefined;
   this.toInstall = true;
@@ -25,19 +25,22 @@ module.exports = function Model(name = "articles", alias = "Articles") {
           type: DataTypes.STRING,
         },
         urlimage: {
-          type: DataTypes.ARRAY,
+          type: DataTypes.STRING,
         },
         title: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          defaultValue:""
         },
         resume: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          defaultValue:""
         },
         text: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          defaultValue:""
         },
       },
       {

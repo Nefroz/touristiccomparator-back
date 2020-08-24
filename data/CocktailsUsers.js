@@ -11,8 +11,8 @@ module.exports = function Model(name = "cocktailsusers", alias = "CocktailsUsers
   this.alias = alias;
   this.scopes = {};
 
-  this.belongsTo = ["Users,Cocktails"];
-  this.hasMany = [""];
+  this.belongsTo = ["Users","Cocktails"];
+  this.hasMany = [];
 
   this.model = undefined;
   this.toInstall = true;
@@ -21,14 +21,14 @@ module.exports = function Model(name = "cocktailsusers", alias = "CocktailsUsers
     const Model = sequelize.define(
       this.name,
       {
-        FavoriteOrNotationOrComment: { // Est ce un ajout aux favoris(0), une notation(1) d'un cocktail,ou un commentaire(2)?
-          type: DataTypes.INT,
+        fnc: { // Est ce un ajout aux favoris(0), une notation(1) d'un cocktail,ou un commentaire(2)?
+          type: DataTypes.BIGINT,
         },
         points: { // Si notation, quelle valeur?
-          type: DataTypes.INT,
+          type: DataTypes.BIGINT,
         },
         text: { // Si commentaire, quelle valeur?
-          type: DataTypes.INT,
+          type: DataTypes.BIGINT,
         },
       },
       {

@@ -64,6 +64,12 @@ const ressources = [
 	"Biere Pils"
 ]
 
+const articletitle = [
+	"Article 1",
+	"Article 2",
+	"Article 3"
+]
+
 const firstnames = [
 	"DYLAN", 
 	"AUBRY", 
@@ -228,6 +234,75 @@ const cocktails = [
 	"Old Fashioned",
 ]
 
+const typeofquantity = [
+	"feuille(s)",
+	"gramme(s)",
+	"cuillère(s) à café",
+	"cuillère(s) à soupe",
+	"centilitres",
+	"unité"
+]
+
+const streetnames = [
+	"rue royale",
+	"rue rogier",
+	"rue du village",
+	"rue de la montagne",
+	"rue de Bruxelles"
+]
+
+const cities = [
+	"Namur",
+	"Liege",
+	"Charleroi",
+	"Bruxelles",
+	"Mons"
+]
+
+const countries = [
+	"Belgique",
+	"France",
+	"Allemagne",
+	"Pays-Bas",
+	"Italie"
+]
+
+const pseudo = [
+	"Paf",
+	"Pif",
+	"Pouf",
+	"Pef",
+	"Pof"
+]
+
+const password = [
+	"Paf123",
+	"Pif123",
+	"Pouf123",
+	"Pef123",
+	"Pof123"
+]
+
+const emails = [
+	"Paf123@yahoo.com",
+	"Pif123@gmail.com",
+	"Pouf123@gmail.be",
+	"Pef123@yahoo.fr",
+	"Pof123@gmail.fr"
+]
+
+const text = [
+	"Ceci est un test 1",
+	"Ceci est un test 2",
+	"Ceci est un test 3"
+]
+
+const subject = [
+	"Test 1",
+	"Test 2",
+	"Test 3"
+]
+
 module.exports = {
 	intervalRandom : intervalRandom,
 	get : (type, min=null, max=null, index = null) => {
@@ -239,6 +314,9 @@ module.exports = {
 			case "lastnames" : 
 				id = intervalRandom(0, lastnames.length-1)
 				return lastnames[id]
+			case "articletitle" :
+				id = intervalRandom(0, articletitle.length-1)
+				return articletitle[id]
 			case "cocktails" : 
 				id = intervalRandom(0, cocktails.length-1)
 				return cocktails[id]
@@ -249,6 +327,33 @@ module.exports = {
 				return hourRandom( moment(min, "HH:mm"), moment(max, "HH:mm") )
 			case "date" : 
 				return dateRandom( moment(min, "DD/MM/YYYY"), moment(max, "DD/MM/YYYY") )
+			case "typeofquantity" : 
+				id = intervalRandom(0, typeofquantity.length-1)
+				return typeofquantity[id]
+			case "streetnames" : 
+				id = intervalRandom(0, streetnames.length-1)
+				return streetnames[id]
+			case "cities" : 
+				id = intervalRandom(0, cities.length-1)
+				return cities[id]
+			case "countries" : 
+				id = intervalRandom(0, countries.length-1)
+				return countries[id]
+			case "pseudo" : 
+				id = intervalRandom(0, pseudo.length-1)
+				return pseudo[id]
+			case "password" : 
+				id = intervalRandom(0, password.length-1)
+				return password[id]
+			case "emails" : 
+				id = intervalRandom(0, emails.length-1)
+				return emails[id]
+			case "text" : 
+				id = intervalRandom(0, text.length-1)
+				return text[id]
+			case "subject" : 
+				id = intervalRandom(0, subject.length-1)
+				return subject[id]
 			default : 
 				return intervalRandom(min, max)
 		}

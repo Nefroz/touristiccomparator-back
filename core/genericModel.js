@@ -21,11 +21,9 @@ module.exports = function Model() {
 		this.belongsTo.map( modelAlias => {
 			if(_.isString(modelAlias) && _.isObject(models[modelAlias])) {
 				this.model.belongsTo(models[modelAlias])
-				// logger.error(`${this.name} belongs to ${modelAlias} !!!`)
 			}
 			else if(_.isObject(modelAlias) && modelAlias.model && modelAlias.options) {
 				this.model.belongsTo(models[modelAlias.model], modelAlias.options)
-				// logger.error(`${this.name} belongs to ${modelAlias} !!!`)
 			}
 			else {
 				logger.error(`${modelAlias} existe pas dans ${this.name} !!!`)
@@ -35,11 +33,9 @@ module.exports = function Model() {
 		this.hasMany.map( modelAlias => {
 			if(_.isString(modelAlias) && _.isObject(models[modelAlias])) {
 				this.model.hasMany(models[modelAlias], { onDelete: "CASCADE" })
-				// logger.error(`${this.name} has many ${modelAlias} !!!`)
 			}
 			else if(_.isObject(modelAlias) && modelAlias.model && modelAlias.options) {
 				this.model.hasMany(models[modelAlias.model], modelAlias.options)
-				// logger.error(`${this.name} has many ${modelAlias} !!!`)
 			}
 			else {
 				logger.error(`${modelAlias} existe pas dans  ${this.name} !!!`)
