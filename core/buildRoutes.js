@@ -151,7 +151,7 @@ allRoutes.map( route => {
     let routeMethods = route.methods;
     addRouteMethods(routeMethods, route)
     routes_by_method[route.method.toLowerCase()] = routes_by_method[route.method.toLowerCase()] || {}
-    routes_by_method[route.method][route.route] = "Rien pour le moment xD"
+    routes_by_method[route.method][route.route] = "Rien pour le moment"
     const check = routeMethods.filter(x => typeof(x) !== "function")
     if(check.length > 0) {
         logger.log(`The route ${route.route} has method who are not a function`)
