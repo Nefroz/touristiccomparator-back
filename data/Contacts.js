@@ -23,16 +23,20 @@ module.exports = function Model(name = "contacts", alias = "Contacts") {
       {
         subject: { //nom du cocktail
           type: DataTypes.STRING,
-          allowNull: false,
-          defaultValue:""
         },
-        userId: {
+        usersId: {
           type: DataTypes.STRING,
         },
         text: {
           type: DataTypes.STRING,
           allowNull: false,
           defaultValue:""
+        },
+        emailcontact: {
+          type: DataTypes.STRING,
+        },
+        telcontact: {
+          type: DataTypes.STRING,
         },
       },
       {

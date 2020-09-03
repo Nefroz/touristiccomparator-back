@@ -12,7 +12,7 @@ module.exports = function Model(name = "cocktails", alias = "Cocktails") {
   this.scopes = {};
 
   this.belongsTo = [];
-  this.hasMany = ["RessourcesCocktails","CocktailsUsers"];
+  this.hasMany = ["Ressourcescocktails","Cocktailsusers","Views"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -38,9 +38,15 @@ module.exports = function Model(name = "cocktails", alias = "Cocktails") {
         degree: { //De 0 a 100, la teneur en alcool du cocktail, mocktail=0
           type: DataTypes.STRING,
         },
-        volume: { //De 1 a 4, pour shooter, petit verre, verre normal, grand verre
+        volume: { //De 0 a 3, pour shooter, petit verre, verre normal, grand verre
           type: DataTypes.STRING,
         },
+        isValidated: { //Cocktail ou ressource validée
+          type: DataTypes.BOOLEAN,
+        },
+        instructions: { //Instructions 
+          type: DataTypes.TEXT,
+        }
       },
       {
         paranoid: true,

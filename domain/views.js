@@ -11,7 +11,7 @@ class Views {
 
     random() {
         this.date = moment(random.get("birthdays")).format('DD-MM-YYYY')
-        this.cocktailId = Utils.getRandomInt(0,49)
+        // this.cocktailId = Utils.getRandomInt(0,49)
         return this 
     }
 }

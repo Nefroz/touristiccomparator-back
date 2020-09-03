@@ -1,7 +1,7 @@
 "use strict";
 const Generic = require("../core/genericModel");
 
-module.exports = function Model(name = "ressourcescocktails", alias = "RessourcesCocktails") {
+module.exports = function Model(name = "ressourcescocktails", alias = "Ressourcescocktails") {
   Generic.call(this);
 
   this.connexion = "sequelize";
@@ -28,16 +28,7 @@ module.exports = function Model(name = "ressourcescocktails", alias = "Ressource
           type: DataTypes.BOOLEAN,
         },
         quantity: { //ex: 1,30,5
-          type: DataTypes.BIGINT,
-        },
-        typeofquantity: { // ex:feuilles,centilitres,grammes
           type: DataTypes.STRING,
-        },
-        toFactorize: { //Peut on factoriser si moins/plus de personnes, ex: 1 cuillere reste une cuillere meme s'il faut le faire pour 1 ou 10 personnes
-          type: DataTypes.BOOLEAN,
-        },
-        isValidated: { //Cocktail ou ressource validée
-          type: DataTypes.BOOLEAN,
         }
       },
       {

@@ -1,7 +1,7 @@
 "use strict";
 const Generic = require("../core/genericModel");
 
-module.exports = function Model(name = "cocktailsusers", alias = "CocktailsUsers") {
+module.exports = function Model(name = "cocktailsusers", alias = "Cocktailsusers") {
   Generic.call(this);
 
   this.connexion = "sequelize";
@@ -22,13 +22,13 @@ module.exports = function Model(name = "cocktailsusers", alias = "CocktailsUsers
       this.name,
       {
         fnc: { // Est ce un ajout aux favoris(0), une notation(1) d'un cocktail,ou un commentaire(2)?
-          type: DataTypes.BIGINT,
+          type: DataTypes.STRING,
         },
         points: { // Si notation, quelle valeur?
-          type: DataTypes.BIGINT,
+          type: DataTypes.STRING,
         },
         text: { // Si commentaire, quelle valeur?
-          type: DataTypes.BIGINT,
+          type: DataTypes.STRING,
         },
       },
       {

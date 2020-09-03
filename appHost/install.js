@@ -7,8 +7,8 @@ const Cocktails = require("../domain/cocktails.js");
 const Users = require("../domain/users.js");
 const Views = require("../domain/views.js");
 const Articles = require("../domain/articles.js");
-const CocktailsUsers = require("../domain/cocktailsusers.js");
-const RessourcesCocktails = require("../domain/ressourcescocktails.js");
+const Cocktailsusers = require("../domain/cocktailsusers.js");
+const Ressourcescocktails = require("../domain/ressourcescocktails.js");
 const Contacts = require("../domain/contacts.js");
 const Utils = require("../core/Utils");
 const random = require("../domain/random.js");
@@ -85,32 +85,32 @@ module.exports = [
                         })
                     },
                     c => {
-                        const cocktailsUsers = []
-                        for(var i=0; i<50; i++) {
-                            const res = new CocktailsUsers().random()
-                            cocktailsUsers.push(res)
-                        }
-                        req.db.CocktailsUsers.bulkCreate(cocktailsUsers, {req : req}).then( () => {
-                            c(null)
-                        })
-                    },
-                    c => {
-                        const ressourcesCocktails = []
-                        for(var i=0; i<50; i++) {
-                            const res = new RessourcesCocktails().random()
-                            ressourcesCocktails.push(res)
-                        }
-                        req.db.RessourcesCocktails.bulkCreate(ressourcesCocktails, {req : req}).then( () => {
-                            c(null)
-                        })
-                    },
-                    c => {
                         const contacts = []
                         for(var i=0; i<50; i++) {
                             const res = new Contacts().random()
                             contacts.push(res)
                         }
                         req.db.Contacts.bulkCreate(contacts, {req : req}).then( () => {
+                            c(null)
+                        })
+                    },
+                    c => {
+                        const ressourcesCocktails = []
+                        for(var i=0; i<50; i++) {
+                            const res = new Ressourcescocktails().random()
+                            ressourcesCocktails.push(res)
+                        }
+                        req.db.Ressourcescocktails.bulkCreate(ressourcesCocktails, {req : req}).then( () => {
+                            c(null)
+                        })
+                    },
+                    c => {
+                        const cocktailsUsers = []
+                        for(var i=0; i<50; i++) {
+                            const res = new Cocktailsusers().random()
+                            cocktailsUsers.push(res)
+                        }
+                        req.db.Cocktailsusers.bulkCreate(cocktailsUsers, {req : req}).then( () => {
                             c(null)
                         })
                     }

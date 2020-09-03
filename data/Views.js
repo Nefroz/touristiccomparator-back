@@ -12,7 +12,7 @@ module.exports = function Model(name = "views", alias = "Views") {
   this.scopes = {};
 
   this.belongsTo = [];
-  this.hasMany = ["Cocktails"];
+  this.hasMany = [];
 
   this.model = undefined;
   this.toInstall = true;

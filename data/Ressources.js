@@ -12,7 +12,7 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
   this.scopes = {};
 
   this.belongsTo = [];
-  this.hasMany = ["RessourcesCocktails"];
+  this.hasMany = ["Ressourcescocktails"];
 
   this.model = undefined;
   this.toInstall = true;
@@ -25,6 +25,15 @@ module.exports = function Model(name = "ressources", alias = "Ressources") {
           type: DataTypes.STRING,
           allowNull: false,
           defaultValue: ""
+        },
+        typeofquantity: { // ex:feuilles,centilitres,grammes
+          type: DataTypes.STRING,
+        },
+        toFactorize: { //Peut on factoriser si moins/plus de personnes, ex: 1 cuillere reste une cuillere meme s'il faut le faire pour 1 ou 10 personnes
+          type: DataTypes.STRING,
+        },
+        isValidated: { //Cocktail ou ressource validée
+          type: DataTypes.BOOLEAN,
         }
       },
       {

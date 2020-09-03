@@ -13,7 +13,9 @@ class Cocktails {
         this.isAlcohol = Utils.getRandomInt(0,1)
         this.price = Utils.getRandomInt(1,3)
         this.difficulty = Utils.getRandomInt(1,3)
-        this.volume = Utils.getRandomInt(1,3)
+        this.degree = Utils.getRandomInt(0,100)
+        this.volume = Utils.getRandomInt(0,3)
+        this.isValidated = Utils.getRandomInt(0,1)
         return this 
     }
 }
